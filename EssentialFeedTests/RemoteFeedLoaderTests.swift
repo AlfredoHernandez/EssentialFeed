@@ -37,7 +37,7 @@ class RemoteFeedLoaderTests: XCTestCase {
     func test_load_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWithResult: .failure(.connectivity), when: {
+        expect(sut, toCompleteWith: .failure(.connectivity), when: {
             let clientError = NSError(domain: "Test", code: 0)
             client.complete(withError: clientError)
         })
@@ -48,7 +48,7 @@ class RemoteFeedLoaderTests: XCTestCase {
         
         let samples = [199, 201, 300, 400, 500]
         samples.enumerated().forEach { index, code in
-            expect(sut, toCompleteWithResult: .failure(.invalidData), when: {
+            expect(sut, toCompleteWith: .failure(.invalidData), when: {
                 client.complete(withStatusCode: code, at: index)
             })
         }
@@ -57,7 +57,7 @@ class RemoteFeedLoaderTests: XCTestCase {
     func test_load_deliversErrorOn200HTTPResponseWithInvalidJSON() {
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWithResult: .failure(.invalidData), when: {
+        expect(sut, toCompleteWith: .failure(.invalidData), when: {
             let invalidJSON = Data("invalid json".utf8)
             client.complete(withStatusCode: 200, data: invalidJSON)
         })
@@ -66,7 +66,7 @@ class RemoteFeedLoaderTests: XCTestCase {
     func test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() {
         let (sut, client) = makeSUT()
 
-        expect(sut, toCompleteWithResult: .success([]), when: {
+        expect(sut, toCompleteWith: .success([]), when: {
             let emptyListJSON = Data("{ \"items\": [] }".utf8)
             client.complete(withStatusCode: 200, data: emptyListJSON)
         })
@@ -80,7 +80,7 @@ class RemoteFeedLoaderTests: XCTestCase {
         return (sut, client)
     }
     
-    private func expect(_ sut: RemoteFeedLoader, toCompleteWithResult result: RemoteFeedLoader.Result, when action: () -> Void,
+    private func expect(_ sut: RemoteFeedLoader, toCompleteWith result: RemoteFeedLoader.Result, when action: () -> Void,
                         file: StaticString = #filePath,
                         line: UInt = #line) {
         var capturedResults = [RemoteFeedLoader.Result]()
