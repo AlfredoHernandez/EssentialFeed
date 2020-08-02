@@ -109,7 +109,7 @@ class RemoteFeedLoaderTests: XCTestCase {
         }
     }
     
-    func makeItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (model: FeedItem, json: [String: Any]) {
+    private func makeItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (model: FeedItem, json: [String: Any]) {
         let item = FeedItem(id: id, description: description, location: location, imageURL: imageURL)
         let json = [
             "id": item.id.uuidString,
@@ -123,7 +123,7 @@ class RemoteFeedLoaderTests: XCTestCase {
     }
     
     /// Serializes JSON `FeedItem`s representation into data
-    func makeItemsJSON(_ items: [[String: Any]]) -> Data {
+    private func makeItemsJSON(_ items: [[String: Any]]) -> Data {
         let json = ["items": items]
         return try! JSONSerialization.data(withJSONObject: json)
     }
