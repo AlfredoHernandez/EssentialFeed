@@ -7,9 +7,8 @@
 
 import Foundation
 
-public typealias LoadFeedResult<Error: Swift.Error> = Result<[FeedItem], Error>
+public typealias LoadFeedResult = Result<[FeedItem], Error>
 
 protocol FeedLoader {
-    associatedtype Error: Swift.Error
-    func load(completion: @escaping (LoadFeedResult<Error>) -> Void)
+    func load(completion: @escaping (LoadFeedResult) -> Void)
 }
