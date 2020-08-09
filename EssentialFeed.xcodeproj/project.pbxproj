@@ -14,6 +14,8 @@
 		386BBCB724D7331E0084F6AD /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386BBCB624D7331E0084F6AD /* HTTPClient.swift */; };
 		386BBCB924D733990084F6AD /* FeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386BBCB824D733990084F6AD /* FeedItemsMapper.swift */; };
 		387B1F3524D221F900CDB3FB /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387B1F3424D221F900CDB3FB /* RemoteFeedLoader.swift */; };
+		38A3028F24E0BAF50073C043 /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A3028E24E0BAF50073C043 /* LocalFeedLoader.swift */; };
+		38A3029124E0BB0A0073C043 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A3029024E0BB0A0073C043 /* FeedStore.swift */; };
 		38AF875C24D76931005D3834 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AF875B24D76931005D3834 /* URLSessionHTTPClientTests.swift */; };
 		38AF875F24D79882005D3834 /* XCTestCase+MemoryLeaksTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AF875E24D79882005D3834 /* XCTestCase+MemoryLeaksTracking.swift */; };
 		38AF876124D7B617005D3834 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AF876024D7B617005D3834 /* URLSessionHTTPClient.swift */; };
@@ -51,6 +53,8 @@
 		386BBCB624D7331E0084F6AD /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		386BBCB824D733990084F6AD /* FeedItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsMapper.swift; sourceTree = "<group>"; };
 		387B1F3424D221F900CDB3FB /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
+		38A3028E24E0BAF50073C043 /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
+		38A3029024E0BB0A0073C043 /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		38AF875B24D76931005D3834 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		38AF875E24D79882005D3834 /* XCTestCase+MemoryLeaksTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeaksTracking.swift"; sourceTree = "<group>"; };
 		38AF876024D7B617005D3834 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 		383CCEFF24D0CFE400D89226 /* EssentialFeed */ = {
 			isa = PBXGroup;
 			children = (
+				38A3028D24E0BAE90073C043 /* Feed Cache */,
 				383CCF0124D0CFE400D89226 /* Info.plist */,
 				383CCF1B24D0D37100D89226 /* Feed Feature */,
 				387B1F3324D221D800CDB3FB /* Feed API */,
@@ -148,6 +153,15 @@
 				38AF876024D7B617005D3834 /* URLSessionHTTPClient.swift */,
 			);
 			path = "Feed API";
+			sourceTree = "<group>";
+		};
+		38A3028D24E0BAE90073C043 /* Feed Cache */ = {
+			isa = PBXGroup;
+			children = (
+				38A3029024E0BB0A0073C043 /* FeedStore.swift */,
+				38A3028E24E0BAF50073C043 /* LocalFeedLoader.swift */,
+			);
+			path = "Feed Cache";
 			sourceTree = "<group>";
 		};
 		38AF875D24D79867005D3834 /* Helpers */ = {
@@ -325,6 +339,8 @@
 				386BBCB924D733990084F6AD /* FeedItemsMapper.swift in Sources */,
 				383CCF1A24D0D2E700D89226 /* FeedLoader.swift in Sources */,
 				387B1F3524D221F900CDB3FB /* RemoteFeedLoader.swift in Sources */,
+				38A3029124E0BB0A0073C043 /* FeedStore.swift in Sources */,
+				38A3028F24E0BAF50073C043 /* LocalFeedLoader.swift in Sources */,
 				386BBCB724D7331E0084F6AD /* HTTPClient.swift in Sources */,
 				383CCF1824D0D02000D89226 /* FeedItem.swift in Sources */,
 				38AF876124D7B617005D3834 /* URLSessionHTTPClient.swift in Sources */,
