@@ -188,7 +188,7 @@ Given the customer doesn't have connectivity
 
 ## App Architecture
 
-![EssentialFeed](./images/EssentialFeed.png)
+![EssentialFeed](./images/architecture_overview.png)
 
 ## Model Specs
 
