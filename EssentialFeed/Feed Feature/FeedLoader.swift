@@ -1,8 +1,5 @@
 //
-//  FeedLoader.swift
-//  EssentialFeed
-//
-//  Created by Jesús Alfredo Hernández Alarcón on 28/07/20.
+//  Copyright © 2020 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
 import Foundation
@@ -10,5 +7,5 @@ import Foundation
 public typealias LoadFeedResult = Result<[FeedImage], Error>
 
 public protocol FeedLoader {
-    func load(completion: @escaping (LoadFeedResult) -> Void)
+	func load(completion: @escaping (LoadFeedResult) -> Void)
 }

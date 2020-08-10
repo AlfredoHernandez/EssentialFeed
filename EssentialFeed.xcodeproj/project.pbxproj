@@ -120,10 +120,10 @@
 		383CCEFF24D0CFE400D89226 /* EssentialFeed */ = {
 			isa = PBXGroup;
 			children = (
-				38A3028D24E0BAE90073C043 /* Feed Cache */,
 				383CCF0124D0CFE400D89226 /* Info.plist */,
-				383CCF1B24D0D37100D89226 /* Feed Feature */,
 				387B1F3324D221D800CDB3FB /* Feed API */,
+				38A3028D24E0BAE90073C043 /* Feed Cache */,
+				383CCF1B24D0D37100D89226 /* Feed Feature */,
 			);
 			path = EssentialFeed;
 			sourceTree = "<group>";
@@ -132,9 +132,9 @@
 			isa = PBXGroup;
 			children = (
 				383CCF0D24D0CFE400D89226 /* Info.plist */,
-				38AF875D24D79867005D3834 /* Helpers */,
-				38C26D0524DB9A9C00389E35 /* Feed Cache */,
 				38FE5C6624D744D200CB5085 /* Feed API */,
+				38C26D0524DB9A9C00389E35 /* Feed Cache */,
+				38AF875D24D79867005D3834 /* Helpers */,
 			);
 			path = EssentialFeedTests;
 			sourceTree = "<group>";
@@ -181,8 +181,8 @@
 		38AF876724D7BC13005D3834 /* EssentialFeedAPIEndToEndTests */ = {
 			isa = PBXGroup;
 			children = (
-				38AF876824D7BC13005D3834 /* EssentialFeedAPIEndToEndTests.swift */,
 				38AF876A24D7BC13005D3834 /* Info.plist */,
+				38AF876824D7BC13005D3834 /* EssentialFeedAPIEndToEndTests.swift */,
 			);
 			path = EssentialFeedAPIEndToEndTests;
 			sourceTree = "<group>";
