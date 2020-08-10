@@ -16,7 +16,7 @@ class CacheFeedUseCase: XCTestCase {
 	func test_save_requestCacheDeletion() {
 		let (sut, store) = makeSUT()
 		
-		sut.save(uniqueItems().models) { _ in }
+		sut.save(uniqueImageFeed().models) { _ in }
 		
 		XCTAssertEqual(store.receivedMessages, [.deleteCacheFeed])
 	}
@@ -25,7 +25,7 @@ class CacheFeedUseCase: XCTestCase {
 		let (sut, store) = makeSUT()
 		let deletionError = anyNSError
 		
-		sut.save(uniqueItems().models) { _ in }
+		sut.save(uniqueImageFeed().models) { _ in }
 		store.completeDeletion(with: deletionError)
 		
 		XCTAssertEqual(store.receivedMessages, [.deleteCacheFeed])
@@ -34,12 +34,12 @@ class CacheFeedUseCase: XCTestCase {
 	func test_save_requestNewCacheInsertionWithTimestampOnSuccessfulDeletion() {
 		let timestamp = Date()
 		let (sut, store) = makeSUT(currentDate: { timestamp })
-		let items = uniqueItems()
+		let feed = uniqueImageFeed()
 		
-		sut.save(items.models) { _ in }
+		sut.save(feed.models) { _ in }
 		store.completeDeletionSuccessfully()
 		
-		XCTAssertEqual(store.receivedMessages, [.deleteCacheFeed, .insert(items.local, timestamp)])
+		XCTAssertEqual(store.receivedMessages, [.deleteCacheFeed, .insert(feed.local, timestamp)])
 	}
 	
 	func test_save_failsOnDeletionError() {
@@ -74,7 +74,7 @@ class CacheFeedUseCase: XCTestCase {
 		var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: { timestamp })
 		
 		var receivedErrors = [LocalFeedLoader.SaveResult]()
-		sut?.save(uniqueItems().models, completion: { receivedErrors.append($0) })
+		sut?.save(uniqueImageFeed().models, completion: { receivedErrors.append($0) })
 		sut = nil
 		store.completeDeletion(with: anyNSError)
 		
@@ -87,7 +87,7 @@ class CacheFeedUseCase: XCTestCase {
 		var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: { timestamp })
 		
 		var receivedErrors = [LocalFeedLoader.SaveResult]()
-		sut?.save(uniqueItems().models, completion: { receivedErrors.append($0) })
+		sut?.save(uniqueImageFeed().models, completion: { receivedErrors.append($0) })
 		store.completeDeletionSuccessfully()
 		sut = nil
 		store.completeInsertion(with: anyNSError)
@@ -109,7 +109,7 @@ class CacheFeedUseCase: XCTestCase {
 		let exp = expectation(description: "Wait for save completion")
 		var receivedError: Error?
 		
-		sut.save(uniqueItems().models) { error in
+		sut.save(uniqueImageFeed().models) { error in
 			receivedError = error
 			exp.fulfill()
 		}
@@ -119,13 +119,13 @@ class CacheFeedUseCase: XCTestCase {
 		XCTAssertEqual(receivedError as NSError?, expectedError, file: file, line: line)
 	}
 	
-	private func uniqueItem() -> FeedItem {
-		FeedItem(id: UUID(), description: "any", location: "any", imageURL: anyURL())
+	private func uniqueImage() -> FeedImage {
+		FeedImage(id: UUID(), description: "any", location: "any", url: anyURL())
 	}
 	
-	private func uniqueItems() -> (models: [FeedItem], local: [LocalFeedItem]) {
-		let items = [uniqueItem(), uniqueItem()]
-		let localItems = items.map { LocalFeedItem(id: $0.id, description: $0.description, location: $0.location, imageURL: $0.imageURL) }
+	private func uniqueImageFeed() -> (models: [FeedImage], local: [LocalFeedImage]) {
+		let items = [uniqueImage(), uniqueImage()]
+		let localItems = items.map { LocalFeedImage(id: $0.id, description: $0.description, location: $0.location, url: $0.url) }
 		return (items, localItems)
 	}
 	
@@ -140,7 +140,7 @@ class CacheFeedUseCase: XCTestCase {
 	private class FeedStoreSpy: FeedStore {
 		enum ReceivedMessage: Equatable {
 			case deleteCacheFeed
-			case insert([LocalFeedItem], Date)
+			case insert([LocalFeedImage], Date)
 		}
 		
 		private (set) var receivedMessages = [ReceivedMessage]()
@@ -152,7 +152,7 @@ class CacheFeedUseCase: XCTestCase {
 			receivedMessages.append(.deleteCacheFeed)
 		}
 		
-		func insert(_ items: [LocalFeedItem], timestamp: Date, completion: @escaping InsertionCompletion) {
+		func insert(_ items: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
 			insertionCompletions.append(completion)
 			receivedMessages.append(.insert(items, timestamp))
 		}
