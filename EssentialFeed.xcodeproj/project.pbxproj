@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3822795F24E30BCD00FAC5A3 /* FeedCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3822795E24E30BCD00FAC5A3 /* FeedCachePolicy.swift */; };
 		383CCF0724D0CFE400D89226 /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 383CCEFD24D0CFE400D89226 /* EssentialFeed.framework */; };
 		383CCF1824D0D02000D89226 /* FeedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383CCF1724D0D02000D89226 /* FeedImage.swift */; };
 		383CCF1A24D0D2E700D89226 /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383CCF1924D0D2E700D89226 /* FeedLoader.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3822795E24E30BCD00FAC5A3 /* FeedCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCachePolicy.swift; sourceTree = "<group>"; };
 		383CCEFD24D0CFE400D89226 /* EssentialFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		383CCF0124D0CFE400D89226 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		383CCF0624D0CFE400D89226 /* EssentialFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +184,7 @@
 		38A3028D24E0BAE90073C043 /* Feed Cache */ = {
 			isa = PBXGroup;
 			children = (
+				3822795E24E30BCD00FAC5A3 /* FeedCachePolicy.swift */,
 				38A3029024E0BB0A0073C043 /* FeedStore.swift */,
 				38A3029424E0C7EB0073C043 /* LocalFeedImage.swift */,
 				38A3028E24E0BAF50073C043 /* LocalFeedLoader.swift */,
@@ -368,6 +371,7 @@
 				386BBCB924D733990084F6AD /* FeedItemsMapper.swift in Sources */,
 				383CCF1A24D0D2E700D89226 /* FeedLoader.swift in Sources */,
 				38A3029324E0C7A80073C043 /* RemoteFeedItem.swift in Sources */,
+				3822795F24E30BCD00FAC5A3 /* FeedCachePolicy.swift in Sources */,
 				387B1F3524D221F900CDB3FB /* RemoteFeedLoader.swift in Sources */,
 				38A3029524E0C7EB0073C043 /* LocalFeedImage.swift in Sources */,
 				38A3029124E0BB0A0073C043 /* FeedStore.swift in Sources */,
