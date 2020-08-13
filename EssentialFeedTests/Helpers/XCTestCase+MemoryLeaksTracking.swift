@@ -1,8 +1,5 @@
 //
-//  XCTestCase+MemoryLeaksTracking.swift
-//  EssentialFeedTests
-//
-//  Created by Jesús Alfredo Hernández Alarcón on 02/08/20.
+//  Copyright © 2020 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
 import XCTest

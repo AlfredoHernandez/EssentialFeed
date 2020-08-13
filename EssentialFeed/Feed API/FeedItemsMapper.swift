@@ -1,40 +1,22 @@
 //
-//  FeedItemsMapper.swift
-//  EssentialFeed
-//
-//  Created by Jesús Alfredo Hernández Alarcón on 02/08/20.
+//  Copyright © 2020 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
 import Foundation
 
 internal final class FeedItemMapper {
     private static let OK_200 = 200
-    
+
     private struct Root: Decodable {
-        let items: [Item]
-        
-        var feed: [FeedItem] { items.map { $0.item } }
+        let items: [RemoteFeedItem]
     }
-    
-    private struct Item: Decodable {
-        let id: UUID
-        let description: String?
-        let location: String?
-        let image: URL
-        
-        var item: FeedItem {
-            FeedItem(id: id,
-                     description: description,
-                     location: location,
-                     imageURL: image)
-        }
-    }
-    
-    internal static func map(data: Data, response: HTTPURLResponse) -> RemoteFeedLoader.Result {
+
+    internal static func map(data: Data, response: HTTPURLResponse) throws -> [RemoteFeedItem] {
         guard response.statusCode == OK_200,
-              let root = try? JSONDecoder().decode(Root.self, from: data) else {
-            return .failure(RemoteFeedLoader.Error.invalidData)
+            let root = try? JSONDecoder().decode(Root.self, from: data)
+        else {
+            throw RemoteFeedLoader.Error.invalidData
         }
-        return .success(root.feed)
+        return root.items
     }
 }
