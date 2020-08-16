@@ -191,9 +191,6 @@
 			children = (
 				3868FB6424E9DE7500DF19F6 /* Core Data */,
 				3822796224E367E000FAC5A3 /* CodableFeedStore.swift */,
-				3868520E24E9B0FA00098EF6 /* CoreDataFeedStore.swift */,
-				3868FB6224E9DE1B00DF19F6 /* CoreDataHelpers.swift */,
-				3868521024E9B4C000098EF6 /* FeedStore.xcdatamodeld */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -201,8 +198,11 @@
 		3868FB6424E9DE7500DF19F6 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				3868FB6524E9DE8400DF19F6 /* ManagedFeedImage.swift */,
+				3868520E24E9B0FA00098EF6 /* CoreDataFeedStore.swift */,
+				3868FB6224E9DE1B00DF19F6 /* CoreDataHelpers.swift */,
 				3868FB6724E9DE8E00DF19F6 /* ManagedCache.swift */,
+				3868FB6524E9DE8400DF19F6 /* ManagedFeedImage.swift */,
+				3868521024E9B4C000098EF6 /* FeedStore.xcdatamodeld */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
