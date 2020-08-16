@@ -49,12 +49,12 @@ public final class CoreDataFeedStore: FeedStore {
             do {
                 try ManagedCache.find(in: context).map(context.delete).map(context.save)
                 completion(nil)
-            }catch {
+            } catch {
                 completion(error)
             }
         }
     }
-    
+
     private func perform(_ action: @escaping (NSManagedObjectContext) -> Void) {
         let context = self.context
         context.perform { action(context) }

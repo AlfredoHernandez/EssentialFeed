@@ -9,7 +9,7 @@ internal extension NSPersistentContainer {
         case modelNotFound
         case failedToLoadPersistentStores(Swift.Error)
     }
-    
+
     static func load(modelName name: String, url: URL, in bundle: Bundle) throws -> NSPersistentContainer {
         guard let model = NSManagedObjectModel.with(name: name, in: bundle) else {
             throw LoadingError.modelNotFound
@@ -20,7 +20,7 @@ internal extension NSPersistentContainer {
         var loadError: Swift.Error?
         container.loadPersistentStores { loadError = $1 }
         try loadError.map { throw LoadingError.failedToLoadPersistentStores($0) }
-        
+
         return container
     }
 }
