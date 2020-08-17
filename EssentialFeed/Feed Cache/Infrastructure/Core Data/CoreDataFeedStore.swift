@@ -14,7 +14,7 @@ public final class CoreDataFeedStore: FeedStore {
         context = container.newBackgroundContext()
     }
 
-    public func retrieve(completion: @escaping RetreivalCompletion) {
+    public func retrieve(completion: @escaping RetrievalCompletion) {
         perform { context in
             do {
                 let request = NSFetchRequest<ManagedCache>(entityName: ManagedCache.entity().name!)

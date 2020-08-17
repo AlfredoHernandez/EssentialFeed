@@ -14,7 +14,7 @@ public protocol FeedStore {
     typealias InsertionCompletion = (Error?) -> Void
 
     typealias RetrievalResult = Swift.Result<CachedFeed, Error>
-    typealias RetreivalCompletion = (RetrievalResult) -> Void
+    typealias RetrievalCompletion = (RetrievalResult) -> Void
 
     /// The completion handler can be invoked in any thread.
     /// Clients are responsible to dispatch to appropriate threads, if needed.
@@ -26,5 +26,5 @@ public protocol FeedStore {
 
     /// The completion handler can be invoked in any thread.
     /// Clients are responsible to dispatch to appropriate threads, if needed.
-    func retrieve(completion: @escaping RetreivalCompletion)
+    func retrieve(completion: @escaping RetrievalCompletion)
 }
