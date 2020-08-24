@@ -475,9 +475,9 @@
 		38E1484224EF3A9A00CC2805 /* EssentialFeediOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				3886154124F448470089CA87 /* Helpers */,
 				38E1484524EF3A9A00CC2805 /* Info.plist */,
 				385EABF924F2DFEC002FDE37 /* FeedViewControllerTests.swift */,
+				3886154124F448470089CA87 /* Helpers */,
 			);
 			path = EssentialFeediOSTests;
 			sourceTree = "<group>";
