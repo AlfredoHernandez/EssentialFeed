@@ -14,7 +14,7 @@ final class FeedViewModel {
 
     var onLoadingStateChange: Observer<Bool>?
     var onFeedLoad: Observer<[FeedImage]>?
-    
+
     func loadFeed() {
         onLoadingStateChange?(true)
         feedLoader.load { [weak self] result in

@@ -306,8 +306,8 @@
 		3860AD5524F6E278003DC1CD /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3860AD5624F6E282003DC1CD /* FeedViewModel.swift */,
 				3860AD5824F6F042003DC1CD /* FeedImageViewModel.swift */,
+				3860AD5624F6E282003DC1CD /* FeedViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
