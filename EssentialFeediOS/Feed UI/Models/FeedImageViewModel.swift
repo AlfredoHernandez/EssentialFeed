@@ -6,6 +6,7 @@ import EssentialFeed
 import UIKit
 
 final class FeedImageViewModel {
+    typealias Observer<T> = (T) -> Void
     private let model: FeedImage
     private let imageLoader: FeedImageDataLoader
     private var task: FeedImageDataLoaderTask?
@@ -15,25 +16,30 @@ final class FeedImageViewModel {
         self.imageLoader = imageLoader
     }
     
-    var onImageLoad: ((UIImage?) -> Void)?
-    var onImageLoadingStateChange: ((Bool) -> Void)?
-    var onShouldRetryImageLoadStateChange: ((Bool) -> Void)?
+    var onImageLoad: Observer<UIImage?>?
+    var onImageLoadingStateChange: Observer<Bool>?
+    var onShouldRetryImageLoadStateChange: Observer<Bool>?
     
     func loadImage() {
         onImageLoadingStateChange?(true)
         onShouldRetryImageLoadStateChange?(false)
         self.task = self.imageLoader.loadImageData(from: self.model.url) { [weak self] result in
-            let data = try? result.get()
-            let image = data.map(UIImage.init) ?? nil
-            self?.onImageLoad?(image)
-            self?.onShouldRetryImageLoadStateChange?(image == nil)
-            self?.onImageLoadingStateChange?(false)
+            self?.handle(result)
         }
     }
     
-    var imageDescription: String? { model.description }
-    var imageLocation: String? { model.location }
-    var hasLocation: Bool { imageLocation != nil }
+    private func handle(_ result: FeedImageDataLoader.Result) {
+        if let data = (try? result.get()).flatMap(UIImage.init){
+            self.onImageLoad?(data)
+        } else {
+             onShouldRetryImageLoadStateChange?(true)
+        }
+        onImageLoadingStateChange?(false)
+    }
+    
+    var description: String? { model.description }
+    var location: String? { model.location }
+    var hasLocation: Bool { location != nil }
     
     func preload() {
         task = imageLoader.loadImageData(from: model.url) { _ in }
