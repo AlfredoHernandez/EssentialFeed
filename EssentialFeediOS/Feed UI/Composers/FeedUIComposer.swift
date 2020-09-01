@@ -57,11 +57,7 @@ private final class FeedViewAdapter: FeedView {
                 imageTransformer: UIImage.init
             )
             let presentationAdapter = FeedImageDataLoaderPresentationAdapter(model: image, imageLoader: imageLoader, presenter: presenter)
-            let controller = FeedImageCellController(
-                loadImage: presentationAdapter.loadImage,
-                preload: presentationAdapter.preload,
-                cancelLoad: presentationAdapter.cancelLoad
-            )
+            let controller = FeedImageCellController(delegate: presentationAdapter)
             presenter.view = controller
             return controller
         }
@@ -89,7 +85,9 @@ private final class FeedLoaderPresentationAdapter: FeedRefreshViewControllerDele
     }
 }
 
-private final class FeedImageDataLoaderPresentationAdapter<View: FeedImageView, Image> where View.Image == Image {
+private final class FeedImageDataLoaderPresentationAdapter<View: FeedImageView, Image>: FeedImageCellControllerDelegate
+    where View.Image == Image
+{
     private let model: FeedImage
     private let imageLoader: FeedImageDataLoader
     private let presenter: FeedImagePresenter<View, Image>
@@ -101,27 +99,25 @@ private final class FeedImageDataLoaderPresentationAdapter<View: FeedImageView, 
         self.presenter = presenter
     }
 
-    func loadImage() {
+    func didRequestImage() {
         presenter.didStartLoadingImageData(for: model)
+
+        let model = self.model
         task = imageLoader.loadImageData(from: model.url) { [weak self] result in
-            self?.handle(result)
+            switch result {
+            case let .success(data):
+                self?.presenter.didFinishLoadingImageData(with: data, for: model)
+            case let .failure(error):
+                self?.presenter.didFinishLoadingImageData(with: error, for: model)
+            }
         }
     }
 
-    private func handle(_ result: FeedImageDataLoader.Result) {
-        switch result {
-        case let .success(data):
-            presenter.didFinishLoadingImageData(with: data, for: model)
-        case let .failure(error):
-            presenter.didFinishLoadingImageData(with: error, for: model)
-        }
+    func didCancelImageRequest() {
+        task?.cancel()
     }
 
     func preload() {
         task = imageLoader.loadImageData(from: model.url) { _ in }
-    }
-
-    func cancelLoad() {
-        task?.cancel()
     }
 }
