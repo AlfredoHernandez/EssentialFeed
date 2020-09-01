@@ -7,23 +7,19 @@ import UIKit
 final class FeedImageCellController: FeedImageView {
     private lazy var cell = FeedImageCell()
     
-    let presenter: FeedImagePresenter<FeedImageCellController,UIImage>
+    let loadImage: () -> Void
+    let preload: () -> Void
+    let cancelLoad: () -> Void
 
-    init(presenter: FeedImagePresenter<FeedImageCellController,UIImage>) {
-        self.presenter = presenter
+    init(loadImage: @escaping () -> Void, preload: @escaping () -> Void, cancelLoad: @escaping () -> Void) {
+        self.loadImage = loadImage
+        self.preload = preload
+        self.cancelLoad = cancelLoad
     }
 
     func view() -> UITableViewCell {
-        presenter.loadImage()
+        loadImage()
         return cell
-    }
-
-    func preload() {
-        presenter.preload()
-    }
-
-    func cancelLoad() {
-        presenter.cancelLoad()
     }
     
     func display(_ viewModel: ViewModel<UIImage>) {
@@ -33,6 +29,6 @@ final class FeedImageCellController: FeedImageView {
         cell.feedImageView.image = viewModel.image
         cell.feedImageContainer.isShimmering = viewModel.isLoading
         cell.feedImageRetryButton.isHidden = !viewModel.shouldRetry
-        cell.onRetry = presenter.loadImage
+        cell.onRetry = loadImage
     }
 }
