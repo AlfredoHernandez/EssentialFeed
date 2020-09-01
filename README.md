@@ -10,7 +10,7 @@
 
 [BDD Specs](./docs/BDD_specs.md)
 
-[Model Specs](./docs/model_specs)
+[Model Specs](./docs/model_specs.md)
 
 [Use Cases](./docs/use_cases.md)
 
