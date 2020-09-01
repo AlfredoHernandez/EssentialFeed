@@ -6,7 +6,7 @@ import UIKit
 
 final class FeedImageCellController: FeedImageView {
     private lazy var cell = FeedImageCell()
-    
+
     let loadImage: () -> Void
     let preload: () -> Void
     let cancelLoad: () -> Void
@@ -21,7 +21,7 @@ final class FeedImageCellController: FeedImageView {
         loadImage()
         return cell
     }
-    
+
     func display(_ viewModel: ViewModel<UIImage>) {
         cell.locationContainer.isHidden = viewModel.location == nil
         cell.locationLabel.text = viewModel.location
