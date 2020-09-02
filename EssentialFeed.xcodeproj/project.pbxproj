@@ -46,8 +46,8 @@
 		38704A07250013E70034168B /* FeedImageCell+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38704A06250013E70034168B /* FeedImageCell+TestHelpers.swift */; };
 		38704A092500146C0034168B /* FeedUIIntegrationTests+Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38704A082500146C0034168B /* FeedUIIntegrationTests+Assertions.swift */; };
 		38704A0B250014BE0034168B /* FeedUIIntegrationTests+LoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38704A0A250014BE0034168B /* FeedUIIntegrationTests+LoaderSpy.swift */; };
-		38704A0D250026390034168B /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38704A0C250026390034168B /* Feed.strings */; };
 		38704A0F250028060034168B /* FeedUIIntegrationTests+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38704A0E250028060034168B /* FeedUIIntegrationTests+Localization.swift */; };
+		38704A1025002A640034168B /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38704A1225002A640034168B /* Feed.strings */; };
 		3878F43124F319A100CEEDDF /* FeedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3878F43024F319A100CEEDDF /* FeedImageCell.swift */; };
 		3878F43324F3369300CEEDDF /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3878F43224F3369300CEEDDF /* UIView+Shimmering.swift */; };
 		387B1F3524D221F900CDB3FB /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387B1F3424D221F900CDB3FB /* RemoteFeedLoader.swift */; };
@@ -171,8 +171,8 @@
 		38704A06250013E70034168B /* FeedImageCell+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedImageCell+TestHelpers.swift"; sourceTree = "<group>"; };
 		38704A082500146C0034168B /* FeedUIIntegrationTests+Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedUIIntegrationTests+Assertions.swift"; sourceTree = "<group>"; };
 		38704A0A250014BE0034168B /* FeedUIIntegrationTests+LoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedUIIntegrationTests+LoaderSpy.swift"; sourceTree = "<group>"; };
-		38704A0C250026390034168B /* Feed.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Feed.strings; sourceTree = "<group>"; };
 		38704A0E250028060034168B /* FeedUIIntegrationTests+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedUIIntegrationTests+Localization.swift"; sourceTree = "<group>"; };
+		38704A1125002A640034168B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Feed.strings; sourceTree = "<group>"; };
 		3878F43024F319A100CEEDDF /* FeedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCell.swift; sourceTree = "<group>"; };
 		3878F43224F3369300CEEDDF /* UIView+Shimmering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmering.swift"; sourceTree = "<group>"; };
 		387B1F3424D221F900CDB3FB /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
@@ -264,7 +264,7 @@
 		380D49C024FED8B900F243D9 /* Feed Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				38704A0C250026390034168B /* Feed.strings */,
+				38704A1225002A640034168B /* Feed.strings */,
 				38C802B824FEF6CA00049586 /* FeedImagePresenter.swift */,
 				38C802BA24FF095C00049586 /* FeedImageViewModel.swift */,
 				38C802BE24FF101600049586 /* FeedLoadingViewModel.swift */,
@@ -770,7 +770,7 @@
 			files = (
 				387049FA250000540034168B /* Feed.storyboard in Resources */,
 				387049FC250000DD0034168B /* Feed.xcassets in Resources */,
-				38704A0D250026390034168B /* Feed.strings in Resources */,
+				38704A1025002A640034168B /* Feed.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -919,6 +919,17 @@
 			targetProxy = 38E1484024EF3A9A00CC2805 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		38704A1225002A640034168B /* Feed.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				38704A1125002A640034168B /* en */,
+			);
+			name = Feed.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		383CCF0F24D0CFE400D89226 /* Debug */ = {
