@@ -12,7 +12,7 @@ class FeedUIIntegrationTests: XCTestCase {
         let (sut, _) = makeSUT()
 
         sut.loadViewIfNeeded()
-        
+
         XCTAssertEqual(sut.title, localized("FEED_VIEW_TITLE"))
     }
 

@@ -2,9 +2,9 @@
 //  Copyright © 2020 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
+import EssentialFeediOS
 import Foundation
 import XCTest
-import EssentialFeediOS
 
 extension FeedUIIntegrationTests {
     func localized(_ key: String, file: StaticString = #file, line: UInt = #line) -> String {
