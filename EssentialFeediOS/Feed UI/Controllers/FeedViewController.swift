@@ -19,7 +19,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         super.viewDidLoad()
         refresh()
     }
-    
+
     @IBAction private func refresh() {
         delegate?.didRequestFeedRefresh()
     }
@@ -28,8 +28,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         return tableModel.count
     }
 
-    override public func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return cellController(forRowAt: indexPath).view()
+    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return cellController(forRowAt: indexPath).view(in: tableView)
     }
 
     override public func tableView(_: UITableView, didEndDisplaying _: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -53,7 +53,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     private func removeCellController(forRowAt indexPath: IndexPath) {
         cellController(forRowAt: indexPath).cancelLoad()
     }
-    
+
     func display(_ viewModel: FeedLoadingViewModel) {
         if viewModel.isLoading {
             refreshControl?.beginRefreshing()
