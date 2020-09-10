@@ -46,7 +46,7 @@ class FeedImagePresenter {
             location: model.location,
             image: imageTransformer(data),
             isLoading: false,
-            shouldRetry: false
+            shouldRetry: true
         ))
     }
 }
@@ -75,7 +75,7 @@ class FeedImagePresenterTests: XCTestCase {
     }
     
     func test_didFinishLoadingImageData_displaysRetryOnFailedImageTransformation() {
-        let (sut, view) = makeSUT(imageTransformer: { _ in nil })
+        let (sut, view) = makeSUT(imageTransformer: fail)
         
         let image = uniqueImage()
         let data = Data()
@@ -87,9 +87,10 @@ class FeedImagePresenterTests: XCTestCase {
         XCTAssertEqual(message?.description, image.description)
         XCTAssertEqual(message?.location, image.location)
         XCTAssertEqual(message?.isLoading, false)
-        XCTAssertEqual(message?.shouldRetry, false)
+        XCTAssertEqual(message?.shouldRetry, true)
         XCTAssertNil(message?.image)
     }
+
     
     // MARK: - Helpers
     
@@ -112,4 +113,8 @@ class FeedImagePresenterTests: XCTestCase {
             messages.append(model)
         }
     }
+    
+    private var fail: (Data) -> Any? {
+         return { _ in nil }
+     }
 }
