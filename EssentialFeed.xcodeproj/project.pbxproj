@@ -302,8 +302,8 @@
 				3868FB6F24E9E1B000DF19F6 /* EssentialFeedCacheIntegrationTests */,
 				38E1483724EF3A9A00CC2805 /* EssentialFeediOS */,
 				38E1484224EF3A9A00CC2805 /* EssentialFeediOSTests */,
-				383CCEFE24D0CFE400D89226 /* Products */,
 				3828749A24F3023B008447C2 /* Frameworks */,
+				383CCEFE24D0CFE400D89226 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -458,11 +458,11 @@
 		3886154024F447BC0089CA87 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				389EA858250AB2440031DC29 /* Helpers */,
 				387049F9250000540034168B /* Feed.storyboard */,
 				389EA856250AAD2C0031DC29 /* ErrorView.swift */,
 				3878F43024F319A100CEEDDF /* FeedImageCell.swift */,
 				387049FB250000DD0034168B /* Feed.xcassets */,
+				389EA858250AB2440031DC29 /* Helpers */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -507,9 +507,9 @@
 		389EA85D250ABA3C0031DC29 /* Feed Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				389EA85E250ABA5F0031DC29 /* FeedPresenterTests.swift */,
-				38704A1625002BA70034168B /* FeedLocalizationTests.swift */,
 				389EA872250ACFF40031DC29 /* FeedImagePresenterTests.swift */,
+				38704A1625002BA70034168B /* FeedLocalizationTests.swift */,
+				389EA85E250ABA5F0031DC29 /* FeedPresenterTests.swift */,
 			);
 			path = "Feed Presentation";
 			sourceTree = "<group>";
@@ -517,13 +517,13 @@
 		389EA867250AC6DD0031DC29 /* Feed Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				389EA864250AC56D0031DC29 /* Feed.strings */,
-				389EA868250AC7080031DC29 /* FeedPresenter.swift */,
-				389EA86B250AC8640031DC29 /* FeedLoadingViewModel.swift */,
 				389EA86D250AC8A20031DC29 /* FeedErrorViewModel.swift */,
-				389EA86F250ACA760031DC29 /* FeedViewModel.swift */,
 				389EA874250ADA920031DC29 /* FeedImagePresenter.swift */,
 				389EA876250ADAFA0031DC29 /* FeedImageViewModel.swift */,
+				389EA86B250AC8640031DC29 /* FeedLoadingViewModel.swift */,
+				389EA868250AC7080031DC29 /* FeedPresenter.swift */,
+				389EA86F250ACA760031DC29 /* FeedViewModel.swift */,
+				389EA864250AC56D0031DC29 /* Feed.strings */,
 			);
 			path = "Feed Presentation";
 			sourceTree = "<group>";

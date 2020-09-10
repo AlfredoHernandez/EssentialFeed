@@ -2,8 +2,8 @@
 //  Copyright © 2020 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
-import UIKit
 import EssentialFeed
+import UIKit
 
 protocol FeedImageCellControllerDelegate {
     func didRequestImage()
