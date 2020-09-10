@@ -2,7 +2,7 @@
 //  Copyright © 2020 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
-@testable import EssentialFeediOS
+import EssentialFeed
 import XCTest
 
 final class FeedLocalizationTests: XCTestCase {

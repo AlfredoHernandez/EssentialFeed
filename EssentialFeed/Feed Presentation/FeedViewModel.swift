@@ -2,8 +2,8 @@
 //  Copyright © 2020 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
-import EssentialFeed
+import Foundation
 
-struct FeedViewModel {
-    let feed: [FeedImage]
+public struct FeedViewModel {
+    public let feed: [FeedImage]
 }
