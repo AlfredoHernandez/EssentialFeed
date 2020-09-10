@@ -12,5 +12,6 @@
 
 [Model Specs](./docs/model_specs.md)
 
-[Use Cases](./docs/use_cases.md)
+[Feed Use Cases](./docs/use_cases.md)
 
+[Feed Image Use Cases](./docs/feed_image_use_cases.md)
