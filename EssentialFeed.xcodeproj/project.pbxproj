@@ -54,7 +54,6 @@
 		3878F43124F319A100CEEDDF /* FeedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3878F43024F319A100CEEDDF /* FeedImageCell.swift */; };
 		3878F43324F3369300CEEDDF /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3878F43224F3369300CEEDDF /* UIView+Shimmering.swift */; };
 		387B1F3524D221F900CDB3FB /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387B1F3424D221F900CDB3FB /* RemoteFeedLoader.swift */; };
-		3886153D24F446D60089CA87 /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3886153C24F446D60089CA87 /* FeedImageDataLoader.swift */; };
 		3886154324F448660089CA87 /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3886154224F448660089CA87 /* UIImage+TestHelpers.swift */; };
 		3886154524F448DB0089CA87 /* UIRefreshControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3886154424F448DB0089CA87 /* UIRefreshControl+TestHelpers.swift */; };
 		38892B8F24F4494B00E3D651 /* UIButton+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38892B8E24F4494B00E3D651 /* UIButton+TestHelpers.swift */; };
@@ -78,6 +77,7 @@
 		389EA873250ACFF40031DC29 /* FeedImagePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389EA872250ACFF40031DC29 /* FeedImagePresenterTests.swift */; };
 		389EA875250ADA920031DC29 /* FeedImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389EA874250ADA920031DC29 /* FeedImagePresenter.swift */; };
 		389EA877250ADAFA0031DC29 /* FeedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389EA876250ADAFA0031DC29 /* FeedImageViewModel.swift */; };
+		389EA878250ADED60031DC29 /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3886153C24F446D60089CA87 /* FeedImageDataLoader.swift */; };
 		38A3028F24E0BAF50073C043 /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A3028E24E0BAF50073C043 /* LocalFeedLoader.swift */; };
 		38A3029124E0BB0A0073C043 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A3029024E0BB0A0073C043 /* FeedStore.swift */; };
 		38A3029324E0C7A80073C043 /* RemoteFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A3029224E0C7A80073C043 /* RemoteFeedItem.swift */; };
@@ -348,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				383CCF1724D0D02000D89226 /* FeedImage.swift */,
+				3886153C24F446D60089CA87 /* FeedImageDataLoader.swift */,
 				383CCF1924D0D2E700D89226 /* FeedLoader.swift */,
 			);
 			path = "Feed Feature";
@@ -426,14 +427,6 @@
 				38AF876024D7B617005D3834 /* URLSessionHTTPClient.swift */,
 			);
 			path = "Feed API";
-			sourceTree = "<group>";
-		};
-		3886153B24F446B60089CA87 /* Feed Image Loader */ = {
-			isa = PBXGroup;
-			children = (
-				3886153C24F446D60089CA87 /* FeedImageDataLoader.swift */,
-			);
-			path = "Feed Image Loader";
 			sourceTree = "<group>";
 		};
 		3886153E24F4478D0089CA87 /* Feed UI */ = {
@@ -576,7 +569,6 @@
 			isa = PBXGroup;
 			children = (
 				38E1483924EF3A9A00CC2805 /* Info.plist */,
-				3886153B24F446B60089CA87 /* Feed Image Loader */,
 				3886153E24F4478D0089CA87 /* Feed UI */,
 			);
 			path = EssentialFeediOS;
@@ -853,6 +845,7 @@
 				3868521224E9B4C000098EF6 /* FeedStore.xcdatamodeld in Sources */,
 				38A3029524E0C7EB0073C043 /* LocalFeedImage.swift in Sources */,
 				3868FB6824E9DE8E00DF19F6 /* ManagedCache.swift in Sources */,
+				389EA878250ADED60031DC29 /* FeedImageDataLoader.swift in Sources */,
 				38A3029124E0BB0A0073C043 /* FeedStore.swift in Sources */,
 				38A3028F24E0BAF50073C043 /* LocalFeedLoader.swift in Sources */,
 				3822796324E367E000FAC5A3 /* CodableFeedStore.swift in Sources */,
@@ -917,7 +910,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3886153D24F446D60089CA87 /* FeedImageDataLoader.swift in Sources */,
 				389EA857250AAD2C0031DC29 /* ErrorView.swift in Sources */,
 				3878F43324F3369300CEEDDF /* UIView+Shimmering.swift in Sources */,
 				387049FE250011A20034168B /* UITableView+Dequeueing.swift in Sources */,
