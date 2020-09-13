@@ -55,22 +55,10 @@ class LocalFeedImageDataLoaderTests: XCTestCase {
 
     func test_loadImageDataFromURL_failsOnStoreError() {
         let (sut, store) = makeSUT()
-        let url = anyURL()
-        let anyError = anyNSError()
 
-        let exp = expectation(description: "Wait for result")
-        _ = sut.loadImageData(from: url) { result in
-            switch result {
-            case let .failure(error):
-                XCTAssertEqual(error as? LocalFeedImageDataLoader.Error, .failed)
-            default:
-                XCTFail("Expected failure, got \(result) instead.")
-            }
-            exp.fulfill()
-        }
-
-        store.complete(with: .failure(anyError))
-        wait(for: [exp], timeout: 1.0)
+        expect(sut, toCompleteWith: .failure(LocalFeedImageDataLoader.Error.failed), when: {
+            store.complete(with: .failure(anyNSError()))
+        })
     }
 
     // MARK: - Helpers
@@ -81,6 +69,31 @@ class LocalFeedImageDataLoaderTests: XCTestCase {
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(store, file: file, line: line)
         return (sut, store)
+    }
+
+    private func expect(
+        _ sut: LocalFeedImageDataLoader,
+        toCompleteWith expectedResult: FeedImageDataLoader.Result,
+        when action: () -> Void,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
+        let exp = expectation(description: "Wait for load completion")
+        _ = sut.loadImageData(from: anyURL()) { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedData), .success(expectedData)):
+                XCTAssertEqual(receivedData, expectedData, file: file, line: line)
+            case let (.failure(receivedError as LocalFeedImageDataLoader.Error), .failure(expectedError as LocalFeedImageDataLoader.Error)):
+                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+            default:
+                XCTFail("Expected result \(expectedResult), got \(receivedResult) instead", file: file, line: line)
+            }
+            exp.fulfill()
+        }
+
+        action()
+
+        wait(for: [exp], timeout: 1.0)
     }
 
     private class FeedStoreSpy: FeedImageDataStore {
