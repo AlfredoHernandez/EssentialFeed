@@ -6,7 +6,7 @@ import EssentialFeed
 import XCTest
 
 protocol FeedImageDataStore {
-    typealias Result = Swift.Result<Data, Error>
+    typealias Result = Swift.Result<Data?, Error>
     func retrieve(dataForURL url: URL, completion: @escaping (Result) -> Void)
 }
 
@@ -19,6 +19,7 @@ class LocalFeedImageDataLoader {
 
     public enum Error: Swift.Error {
         case failed
+        case notFound
     }
 
     init(store: FeedImageDataStore) {
@@ -28,9 +29,10 @@ class LocalFeedImageDataLoader {
     func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
         store.retrieve(dataForURL: url) { result in
             switch result {
+            case .success:
+                completion(.failure(Error.notFound))
             case .failure:
                 completion(.failure(Error.failed))
-            default: break
             }
         }
         return Task()
@@ -57,7 +59,15 @@ class LocalFeedImageDataLoaderTests: XCTestCase {
         let (sut, store) = makeSUT()
 
         expect(sut, toCompleteWith: .failure(LocalFeedImageDataLoader.Error.failed), when: {
-            store.complete(with: .failure(anyNSError()))
+            store.complete(with: anyNSError())
+        })
+    }
+
+    func test_loadImageDataFromURL_deliversNotFoundErrorOnNotFound() {
+        let (sut, store) = makeSUT()
+
+        expect(sut, toCompleteWith: .failure(LocalFeedImageDataLoader.Error.notFound), when: {
+            store.complete(with: .none)
         })
     }
 
@@ -99,18 +109,24 @@ class LocalFeedImageDataLoaderTests: XCTestCase {
     private class FeedStoreSpy: FeedImageDataStore {
         enum Message: Equatable {
             case retrieve(dataForUrl: URL)
+            case none
         }
 
         var messages = [Message]()
-        var completions = [(FeedImageDataLoader.Result) -> Void]()
 
-        func retrieve(dataForURL url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) {
+        var completions = [(FeedImageDataStore.Result) -> Void]()
+
+        func retrieve(dataForURL url: URL, completion: @escaping (FeedImageDataStore.Result) -> Void) {
             messages.append(.retrieve(dataForUrl: url))
             completions.append(completion)
         }
 
-        func complete(with result: FeedImageDataStore.Result, at index: Int = 0) {
-            completions[index](result)
+        func complete(with error: Error, at index: Int = 0) {
+            completions[index](.failure(error))
+        }
+
+        func complete(with data: Data?, at index: Int = 0) {
+            completions[index](.success(data))
         }
     }
 }
