@@ -2,10 +2,28 @@
 //  Copyright © 2020 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
+import EssentialFeed
 import XCTest
 
+protocol FeedImageDataStore {
+    func retrieve(dataForURL url: URL)
+}
+
 class LocalFeedImageDataLoader {
-    init(store _: Any) {}
+    let store: FeedImageDataStore
+
+    private struct Task: FeedImageDataLoaderTask {
+        func cancel() {}
+    }
+
+    init(store: FeedImageDataStore) {
+        self.store = store
+    }
+
+    func loadImageData(from url: URL, completion _: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
+        store.retrieve(dataForURL: url)
+        return Task()
+    }
 }
 
 class LocalFeedImageDataLoaderTests: XCTestCase {
@@ -13,6 +31,15 @@ class LocalFeedImageDataLoaderTests: XCTestCase {
         let (_, store) = makeSUT()
 
         XCTAssertTrue(store.messages.isEmpty)
+    }
+
+    func test_loadImageDataFromURL_requestsStoredDataForURL() {
+        let (sut, store) = makeSUT()
+        let url = anyURL()
+
+        _ = sut.loadImageData(from: url) { _ in }
+
+        XCTAssertEqual(store.messages, [.retrieve(dataForUrl: url)])
     }
 
     // MARK: - Helpers
@@ -25,7 +52,15 @@ class LocalFeedImageDataLoaderTests: XCTestCase {
         return (sut, store)
     }
 
-    private class FeedStoreSpy {
-        var messages = [Any]()
+    private class FeedStoreSpy: FeedImageDataStore {
+        enum Message: Equatable {
+            case retrieve(dataForUrl: URL)
+        }
+
+        var messages = [Message]()
+
+        func retrieve(dataForURL url: URL) {
+            messages.append(.retrieve(dataForUrl: url))
+        }
     }
 }
