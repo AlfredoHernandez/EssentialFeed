@@ -5,57 +5,6 @@
 import EssentialFeed
 import XCTest
 
-protocol FeedImageDataStore {
-    typealias Result = Swift.Result<Data?, Error>
-    func retrieve(dataForURL url: URL, completion: @escaping (Result) -> Void)
-}
-
-class LocalFeedImageDataLoader {
-    let store: FeedImageDataStore
-
-    private class Task: FeedImageDataLoaderTask {
-        var completion: ((FeedImageDataLoader.Result) -> Void)?
-
-        init(completion: @escaping (FeedImageDataLoader.Result) -> Void) {
-            self.completion = completion
-        }
-
-        func complete(with result: FeedImageDataLoader.Result) {
-            completion?(result)
-        }
-
-        func cancel() {
-            preventFurtherCompletions()
-        }
-
-        private func preventFurtherCompletions() {
-            completion = nil
-        }
-    }
-
-    public enum Error: Swift.Error {
-        case failed
-        case notFound
-    }
-
-    init(store: FeedImageDataStore) {
-        self.store = store
-    }
-
-    func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
-        let task = Task(completion: completion)
-        store.retrieve(dataForURL: url) { [weak self] result in
-            guard self != nil else { return }
-            task.complete(
-                with: result
-                    .mapError { _ in Error.failed }
-                    .flatMap { data in data.map { .success($0) } ?? .failure(Error.notFound) }
-            )
-        }
-        return task
-    }
-}
-
 class LocalFeedImageDataLoaderTests: XCTestCase {
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
