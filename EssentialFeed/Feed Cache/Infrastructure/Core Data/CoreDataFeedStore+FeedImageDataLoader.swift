@@ -5,9 +5,20 @@
 import Foundation
 
 extension CoreDataFeedStore: FeedImageDataStore {
-    public func insert(_: Data, for _: URL, completion _: @escaping (FeedImageDataStore.InsertionResult) -> Void) {}
+    public func insert(_ data: Data, for url: URL, completion _: @escaping (FeedImageDataStore.InsertionResult) -> Void) {
+        perform { context in
+            guard let image = try? ManagedFeedImage.first(with: url, in: context) else { return }
 
-    public func retrieve(dataForURL _: URL, completion: @escaping (FeedImageDataStore.RetrievalResult) -> Void) {
-        completion(.success(.none))
+            image.data = data
+            try? context.save()
+        }
+    }
+
+    public func retrieve(dataForURL url: URL, completion: @escaping (FeedImageDataStore.RetrievalResult) -> Void) {
+        perform { context in
+            completion(Result {
+                try ManagedFeedImage.first(with: url, in: context)?.data
+            })
+        }
     }
 }
