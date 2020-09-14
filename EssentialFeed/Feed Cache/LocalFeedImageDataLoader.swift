@@ -14,7 +14,7 @@ public class LocalFeedImageDataLoader {
 
 extension LocalFeedImageDataLoader {
     public typealias SaveResult = FeedImageDataStore.InsertionResult
-    
+
     public enum SaveError: Error {
         case failed
     }
