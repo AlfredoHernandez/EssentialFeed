@@ -64,7 +64,7 @@
 		3891A8BE250E962C00ABAEB2 /* RemoteFeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891A8BD250E962C00ABAEB2 /* RemoteFeedImageDataLoader.swift */; };
 		3891A8C1250EA59800ABAEB2 /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891A8C0250EA59800ABAEB2 /* HTTPURLResponse+StatusCode.swift */; };
 		3891A8C3250EA66500ABAEB2 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891A8C2250EA66500ABAEB2 /* URLProtocolStub.swift */; };
-		3891A8C7250EB51400ABAEB2 /* LocalFeedImageDataLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891A8C6250EB51400ABAEB2 /* LocalFeedImageDataLoaderTests.swift */; };
+		3891A8C7250EB51400ABAEB2 /* LoadFeedImageDataFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891A8C6250EB51400ABAEB2 /* LoadFeedImageDataFromCacheUseCaseTests.swift */; };
 		3891A8C9250ED32000ABAEB2 /* LocalFeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891A8C8250ED32000ABAEB2 /* LocalFeedImageDataLoader.swift */; };
 		3891A8CB250ED35B00ABAEB2 /* FeedImageDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891A8CA250ED35B00ABAEB2 /* FeedImageDataStore.swift */; };
 		389531E824E1D712007F0FF7 /* LoadFeedFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389531E724E1D712007F0FF7 /* LoadFeedFromCacheUseCaseTests.swift */; };
@@ -210,7 +210,7 @@
 		3891A8BD250E962C00ABAEB2 /* RemoteFeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedImageDataLoader.swift; sourceTree = "<group>"; };
 		3891A8C0250EA59800ABAEB2 /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
 		3891A8C2250EA66500ABAEB2 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
-		3891A8C6250EB51400ABAEB2 /* LocalFeedImageDataLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedImageDataLoaderTests.swift; sourceTree = "<group>"; };
+		3891A8C6250EB51400ABAEB2 /* LoadFeedImageDataFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedImageDataFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		3891A8C8250ED32000ABAEB2 /* LocalFeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedImageDataLoader.swift; sourceTree = "<group>"; };
 		3891A8CA250ED35B00ABAEB2 /* FeedImageDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataStore.swift; sourceTree = "<group>"; };
 		389531E724E1D712007F0FF7 /* LoadFeedFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
@@ -596,7 +596,7 @@
 				3868520C24E9AA9B00098EF6 /* CoreDataFeedStoreTests.swift */,
 				386484EE24E59C6600B66E0E /* FeedStoreSpecs.swift */,
 				389531E724E1D712007F0FF7 /* LoadFeedFromCacheUseCaseTests.swift */,
-				3891A8C6250EB51400ABAEB2 /* LocalFeedImageDataLoaderTests.swift */,
+				3891A8C6250EB51400ABAEB2 /* LoadFeedImageDataFromCacheUseCaseTests.swift */,
 				389531EC24E205CC007F0FF7 /* ValidateFeedCacheUseCaseTests.swift */,
 				389531E924E1DADD007F0FF7 /* Helpers */,
 			);
@@ -930,7 +930,7 @@
 				386484F124E59D5E00B66E0E /* XCTestCase+FeedStoreSpecs.swift in Sources */,
 				3868520D24E9AA9B00098EF6 /* CoreDataFeedStoreTests.swift in Sources */,
 				3891A8BC250E941400ABAEB2 /* HTTPClientSpy.swift in Sources */,
-				3891A8C7250EB51400ABAEB2 /* LocalFeedImageDataLoaderTests.swift in Sources */,
+				3891A8C7250EB51400ABAEB2 /* LoadFeedImageDataFromCacheUseCaseTests.swift in Sources */,
 				386484F324E59F8000B66E0E /* FailableRetrieveFeedStoreSpecs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
