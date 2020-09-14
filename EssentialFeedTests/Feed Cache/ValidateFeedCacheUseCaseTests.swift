@@ -65,33 +65,44 @@ class ValidateFeedCacheUseCaseTests: XCTestCase {
 
         XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCacheFeed])
     }
-    
+
     func test_validateCache_failsOnDeletionErrorOfFailedRetrieval() {
-         let (sut, store) = makeSUT()
-         let deletionError = anyNSError()
+        let (sut, store) = makeSUT()
+        let deletionError = anyNSError()
 
-         expect(sut, toCompleteWith: .failure(deletionError), when: {
-             store.completeRetrieval(with: anyNSError())
-             store.completeDeletion(with: deletionError)
-         })
-     }
+        expect(sut, toCompleteWith: .failure(deletionError), when: {
+            store.completeRetrieval(with: anyNSError())
+            store.completeDeletion(with: deletionError)
+        })
+    }
 
-     func test_validateCache_succeedsOnSuccessfulDeletionOfFailedRetrieval() {
-         let (sut, store) = makeSUT()
+    func test_validateCache_succeedsOnSuccessfulDeletionOfFailedRetrieval() {
+        let (sut, store) = makeSUT()
 
-         expect(sut, toCompleteWith: .success(()), when: {
-             store.completeRetrieval(with: anyNSError())
-             store.completeDeletionSuccessfully()
-         })
-     }
-    
+        expect(sut, toCompleteWith: .success(()), when: {
+            store.completeRetrieval(with: anyNSError())
+            store.completeDeletionSuccessfully()
+        })
+    }
+
     func test_validateCache_succeedsOnEmptyCache() {
-         let (sut, store) = makeSUT()
+        let (sut, store) = makeSUT()
 
-         expect(sut, toCompleteWith: .success(()), when: {
-             store.completeRetrievalWithEmptyCache()
-         })
-     }
+        expect(sut, toCompleteWith: .success(()), when: {
+            store.completeRetrievalWithEmptyCache()
+        })
+    }
+
+    func test_validateCache_succeedsOnNonExpiredCache() {
+        let feed = uniqueImageFeed()
+        let fixedCurrentDate = Date()
+        let nonExpiredTimestamp = fixedCurrentDate.minusFeedCacheMaxAge().adding(seconds: 1)
+        let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
+
+        expect(sut, toCompleteWith: .success(()), when: {
+            store.completeRetrieval(with: feed.local, timestamp: nonExpiredTimestamp)
+        })
+    }
 
     func test_validateCache_doesNotDeleteInvalidCacheAfterSUTInstanceHasBeenDeallocated() {
         let store = FeedStoreSpy()
@@ -117,26 +128,32 @@ class ValidateFeedCacheUseCaseTests: XCTestCase {
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, store)
     }
-    
-    private func expect(_ sut: LocalFeedLoader, toCompleteWith expectedResult: LocalFeedLoader.ValidationResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
-         let exp = expectation(description: "Wait for load completion")
 
-         sut.validateCache { receivedResult in
-             switch (receivedResult, expectedResult) {
-             case (.success, .success):
-                 break
+    private func expect(
+        _ sut: LocalFeedLoader,
+        toCompleteWith expectedResult: LocalFeedLoader.ValidationResult,
+        when action: () -> Void,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
+        let exp = expectation(description: "Wait for load completion")
 
-             case let (.failure(receivedError as NSError), .failure(expectedError as NSError)):
-                 XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+        sut.validateCache { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case (.success, .success):
+                break
 
-             default:
-                 XCTFail("Expected result \(expectedResult), got \(receivedResult) instead", file: file, line: line)
-             }
+            case let (.failure(receivedError as NSError), .failure(expectedError as NSError)):
+                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
 
-             exp.fulfill()
-         }
+            default:
+                XCTFail("Expected result \(expectedResult), got \(receivedResult) instead", file: file, line: line)
+            }
 
-         action()
-         wait(for: [exp], timeout: 1.0)
-     }
+            exp.fulfill()
+        }
+
+        action()
+        wait(for: [exp], timeout: 1.0)
+    }
 }
