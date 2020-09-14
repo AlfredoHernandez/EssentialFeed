@@ -22,12 +22,7 @@ extension LocalFeedImageDataLoader {
     public func save(_ data: Data, for url: URL, completion: @escaping (SaveResult) -> Void) {
         store.insert(data, for: url) { [weak self] result in
             guard self != nil else { return }
-            switch result {
-            case .success:
-                completion(.success(()))
-            case .failure:
-                completion(.failure(SaveError.failed))
-            }
+            completion(result.mapError { _ in SaveError.failed }.flatMap { .success(()) })
         }
     }
 }
