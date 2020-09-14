@@ -4,7 +4,7 @@
 
 import Foundation
 
-public class LocalFeedImageDataLoader {
+public class LocalFeedImageDataLoader: FeedImageDataLoader {
     let store: FeedImageDataStore
 
     public typealias SaveResult = FeedImageDataStore.InsertionResult
