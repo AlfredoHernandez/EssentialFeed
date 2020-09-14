@@ -7,6 +7,8 @@ import Foundation
 public class LocalFeedImageDataLoader {
     let store: FeedImageDataStore
 
+    public typealias SaveResult = FeedImageDataStore.InsertionResult
+
     private class Task: FeedImageDataLoaderTask {
         var completion: ((FeedImageDataLoader.Result) -> Void)?
 
@@ -47,5 +49,9 @@ public class LocalFeedImageDataLoader {
             )
         }
         return task
+    }
+
+    public func save(_ data: Data, for url: URL, completion: @escaping (SaveResult) -> Void) {
+        store.insert(data, for: url, completion: completion)
     }
 }
