@@ -5,8 +5,23 @@
 import EssentialFeed
 import XCTest
 
-class FeedImageDataLoaderWithFallbackComposite {
-    init(primary _: FeedImageDataLoader, fallback _: FeedImageDataLoader) {}
+class FeedImageDataLoaderWithFallbackComposite: FeedImageDataLoader {
+    let primary: FeedImageDataLoader
+    let fallback: FeedImageDataLoader
+
+    class Task: FeedImageDataLoaderTask {
+        func cancel() {}
+    }
+
+    init(primary: FeedImageDataLoader, fallback: FeedImageDataLoader) {
+        self.primary = primary
+        self.fallback = fallback
+    }
+
+    func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
+        _ = primary.loadImageData(from: url, completion: completion)
+        return Task()
+    }
 }
 
 class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
@@ -19,18 +34,38 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
         XCTAssertTrue(fallbackLoader.loadedURLs.isEmpty, "Expected no loaded URLs in the fallback loader")
     }
 
+    func test_loadImageData_loadsFromPrimaryLoaderFirst() {
+        let url = anyURL()
+        let primaryLoader = LoaderStub()
+        let fallbackLoader = LoaderStub()
+        let sut = FeedImageDataLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
+
+        _ = sut.loadImageData(from: url) { _ in }
+
+        XCTAssertEqual(primaryLoader.loadedURLs, [url])
+        XCTAssertTrue(fallbackLoader.loadedURLs.isEmpty)
+    }
+
     // MARK: -  Helpers
 
+    private func anyURL() -> URL {
+        return URL(string: "http://a-url.com")!
+    }
+
     private class LoaderStub: FeedImageDataLoader {
-        private class FeedImageDataLoaderTaskFake: FeedImageDataLoaderTask {
+        private struct Task: FeedImageDataLoaderTask {
             func cancel() {}
         }
 
-        var loadedURLs = [URL]()
+        private var messages = [(url: URL, completion: (FeedImageDataLoader.Result) -> Void)]()
 
-        func loadImageData(from url: URL, completion _: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
-            loadedURLs.append(url)
-            return FeedImageDataLoaderTaskFake()
+        var loadedURLs: [URL] {
+            return messages.map { $0.url }
+        }
+
+        func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
+            messages.append((url, completion))
+            return Task()
         }
     }
 }
