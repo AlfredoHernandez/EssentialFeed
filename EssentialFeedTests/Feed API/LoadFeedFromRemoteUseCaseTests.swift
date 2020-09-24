@@ -110,7 +110,7 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
 
     private func makeSUT(
         url: URL = URL(string: "https://a-url.com")!,
-        file: StaticString = #file,
+        file: StaticString = #filePath,
         line: UInt = #line
     ) -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
@@ -150,7 +150,7 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
         _ sut: RemoteFeedLoader,
         toCompleteWith expectedResult: RemoteFeedLoader.Result,
         when action: () -> Void,
-        file: StaticString = #file,
+        file: StaticString = #filePath,
         line: UInt = #line
     ) {
         let exp = expectation(description: "Wait for load completion")

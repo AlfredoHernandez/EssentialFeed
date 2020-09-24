@@ -33,7 +33,7 @@ class FeedLoaderWithFallbackCompositeTests: XCTestCase {
     private func makeSUT(
         primaryResult: FeedLoader.Result,
         fallbackResult: FeedLoader.Result,
-        file: StaticString = #file,
+        file: StaticString = #filePath,
         line: UInt = #line
     ) -> FeedLoader {
         let primaryLoader = LoaderStub(result: primaryResult)
@@ -48,7 +48,7 @@ class FeedLoaderWithFallbackCompositeTests: XCTestCase {
     private func expect(
         _ sut: FeedLoader,
         toCompleteWith expectedResult: FeedLoader.Result,
-        file: StaticString = #file,
+        file: StaticString = #filePath,
         line: UInt = #line
     ) {
         let exp = expectation(description: "Wait for load completion")

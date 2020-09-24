@@ -117,7 +117,7 @@ class LoadFeedImageDataFromRemoteUseCaseTests: XCTestCase {
 
     private func makeSUT(
         url _: URL = anyURL(),
-        file: StaticString = #file,
+        file: StaticString = #filePath,
         line: UInt = #line
     ) -> (sut: RemoteFeedImageDataLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
@@ -131,7 +131,7 @@ class LoadFeedImageDataFromRemoteUseCaseTests: XCTestCase {
         _ sut: RemoteFeedImageDataLoader,
         toCompleteWith expectedResult: FeedImageDataLoader.Result,
         when action: () -> Void,
-        file: StaticString = #file,
+        file: StaticString = #filePath,
         line: UInt = #line
     ) {
         let url = URL(string: "https://a-given-url.com")!
