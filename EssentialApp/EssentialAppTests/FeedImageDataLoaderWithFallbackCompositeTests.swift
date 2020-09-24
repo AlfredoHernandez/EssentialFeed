@@ -92,7 +92,7 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     // MARK: -  Helpers
 
     private func makeSUT(
-        file: StaticString = #file,
+        file: StaticString = #filePath,
         line: UInt = #line
     ) -> (sut: FeedImageDataLoader, primary: LoaderSpy, fallback: LoaderSpy) {
         let primaryLoader = LoaderSpy()
@@ -108,7 +108,7 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
         _ sut: FeedImageDataLoader,
         toCompleteWith expectedResult: FeedImageDataLoader.Result,
         when action: () -> Void,
-        file: StaticString = #file,
+        file: StaticString = #filePath,
         line: UInt = #line
     ) {
         let exp = expectation(description: "Wait for load completion")

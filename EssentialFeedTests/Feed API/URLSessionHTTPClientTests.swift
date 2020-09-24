@@ -77,7 +77,7 @@ class URLSessionHTTPClientTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> HTTPClient {
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> HTTPClient {
         let configuration = URLSessionConfiguration.ephemeral
         configuration.protocolClasses = [URLProtocolStub.self]
         let session = URLSession(configuration: configuration)
@@ -89,7 +89,7 @@ class URLSessionHTTPClientTests: XCTestCase {
 
     private func resultValuesFor(
         _ values: (data: Data?, response: URLResponse?, error: Error?),
-        file: StaticString = #file,
+        file: StaticString = #filePath,
         line: UInt = #line
     ) -> (data: Data, response: HTTPURLResponse)? {
         let result = resultFor(values, file: file, line: line)
@@ -106,7 +106,7 @@ class URLSessionHTTPClientTests: XCTestCase {
     private func resultErrorFor(
         _ values: (data: Data?, response: URLResponse?, error: Error?)? = nil,
         taskHandler: (HTTPClientTask) -> Void = { _ in },
-        file: StaticString = #file,
+        file: StaticString = #filePath,
         line: UInt = #line
     ) -> Error? {
         let result = resultFor(values, taskHandler: taskHandler, file: file, line: line)
@@ -123,7 +123,7 @@ class URLSessionHTTPClientTests: XCTestCase {
     private func resultFor(
         _ values: (data: Data?, response: URLResponse?, error: Error?)?,
         taskHandler: (HTTPClientTask) -> Void = { _ in },
-        file: StaticString = #file,
+        file: StaticString = #filePath,
         line: UInt = #line
     ) -> HTTPClient.Result {
         values.map { URLProtocolStub.stub(data: $0, response: $1, error: $2) }
