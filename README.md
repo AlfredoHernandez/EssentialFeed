@@ -6,6 +6,10 @@
 
 ![EssentialFeed](./images/architecture_overview.png)
 
+## Loaders Architecture
+
+![EssentialFeed](./images/loaders_architecture_overview.png)
+
 ## App Requirements
 
 [BDD Specs](./docs/BDD_specs.md)
