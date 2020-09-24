@@ -2,27 +2,9 @@
 //  Copyright © 2020 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
+import EssentialApp
 import EssentialFeed
 import XCTest
-
-class FeedLoaderCacheDecorator: FeedLoader {
-    let decoratee: FeedLoader
-    let cache: FeedCache
-
-    init(decoratee: FeedLoader, cache: FeedCache) {
-        self.decoratee = decoratee
-        self.cache = cache
-    }
-
-    func load(completion: @escaping (Result<[FeedImage], Error>) -> Void) {
-        decoratee.load { [weak self] result in
-            completion(result.map { feed in
-                self?.cache.save(feed) { _ in }
-                return feed
-            })
-        }
-    }
-}
 
 class FeedLoaderCacheDecoratorTests: XCTestCase, FeedLoaderTestCase {
     func test_load_deliversFeedOnLoaderSuccess() {
