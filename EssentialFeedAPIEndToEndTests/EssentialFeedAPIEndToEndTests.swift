@@ -78,7 +78,7 @@ class EssentialFeedAPIEndToEndTests: XCTestCase {
     }
 
     private func expectedImage(at index: Int) -> FeedImage {
-        return FeedImage(
+        FeedImage(
             id: id(at: index),
             description: description(at: index),
             location: location(at: index),
@@ -87,7 +87,7 @@ class EssentialFeedAPIEndToEndTests: XCTestCase {
     }
 
     private func id(at index: Int) -> UUID {
-        return UUID(uuidString: [
+        UUID(uuidString: [
             "73A7F70C-75DA-4C2E-B5A3-EED40DC53AA6",
             "BA298A85-6275-48D3-8315-9C8F7C1CD109",
             "5A0D45B3-8E26-4385-8C5D-213E160A5E3C",
@@ -100,7 +100,7 @@ class EssentialFeedAPIEndToEndTests: XCTestCase {
     }
 
     private func description(at index: Int) -> String? {
-        return [
+        [
             "Description 1",
             nil,
             "Description 3",
@@ -113,7 +113,7 @@ class EssentialFeedAPIEndToEndTests: XCTestCase {
     }
 
     private func location(at index: Int) -> String? {
-        return [
+        [
             "Location 1",
             "Location 2",
             nil,
@@ -126,10 +126,10 @@ class EssentialFeedAPIEndToEndTests: XCTestCase {
     }
 
     private func imageURL(at index: Int) -> URL {
-        return URL(string: "https://url-\(index + 1).com")!
+        URL(string: "https://url-\(index + 1).com")!
     }
 
     private var feedTestServerURL: URL {
-        return URL(string: "https://essentialdeveloper.com/feed-case-study/test-api/feed")!
+        URL(string: "https://essentialdeveloper.com/feed-case-study/test-api/feed")!
     }
 }

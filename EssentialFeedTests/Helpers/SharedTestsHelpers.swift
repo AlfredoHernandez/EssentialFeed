@@ -13,5 +13,5 @@ func anyURL() -> URL {
 }
 
 func anyData() -> Data {
-    return Data("any data".utf8)
+    Data("any data".utf8)
 }

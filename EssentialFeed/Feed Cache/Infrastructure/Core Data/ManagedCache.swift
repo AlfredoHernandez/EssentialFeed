@@ -23,6 +23,6 @@ extension ManagedCache {
     }
 
     var localFeed: [LocalFeedImage] {
-        return feed.compactMap { ($0 as? ManagedFeedImage)?.local }
+        feed.compactMap { ($0 as? ManagedFeedImage)?.local }
     }
 }

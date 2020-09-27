@@ -11,7 +11,7 @@ class FeedImageDataLoaderSpy: FeedImageDataLoader {
     private(set) var cancelledURLs = [URL]()
 
     var loadedURLs: [URL] {
-        return messages.map { $0.url }
+        messages.map(\.url)
     }
 
     private struct Task: FeedImageDataLoaderTask {

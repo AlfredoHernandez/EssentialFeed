@@ -8,7 +8,7 @@ public final class ErrorView: UIView {
     @IBOutlet private var label: UILabel!
 
     public var message: String? {
-        get { return isVisible ? label.text : nil }
+        get { isVisible ? label.text : nil }
         set { setMessageAnimated(newValue) }
     }
 
@@ -20,7 +20,7 @@ public final class ErrorView: UIView {
     }
 
     private var isVisible: Bool {
-        return alpha > 0
+        alpha > 0
     }
 
     private func setMessageAnimated(_ message: String?) {

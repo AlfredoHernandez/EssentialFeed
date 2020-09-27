@@ -10,12 +10,12 @@ public extension UIView {
             if newValue { startShimmering() } else { stopShimmering() }
         }
         get {
-            return layer.mask?.animation(forKey: shimmerAnimationKey) != nil
+            layer.mask?.animation(forKey: shimmerAnimationKey) != nil
         }
     }
 
     private var shimmerAnimationKey: String {
-        return "shimmer"
+        "shimmer"
     }
 
     private func startShimmering() {

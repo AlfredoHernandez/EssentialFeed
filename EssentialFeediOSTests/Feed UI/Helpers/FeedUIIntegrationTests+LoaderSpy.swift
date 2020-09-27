@@ -29,7 +29,7 @@ class FeedLoaderSpy: FeedLoader, FeedImageDataLoader {
 
     private var imageRequests = [(url: URL, completion: (FeedImageDataLoader.Result) -> Void)]()
     var loadedImageURLs: [URL] {
-        imageRequests.map { $0.url }
+        imageRequests.map(\.url)
     }
 
     private(set) var cancelledImageURLs = [URL]()

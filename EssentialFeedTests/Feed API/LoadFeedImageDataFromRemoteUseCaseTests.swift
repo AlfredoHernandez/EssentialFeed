@@ -158,6 +158,6 @@ class LoadFeedImageDataFromRemoteUseCaseTests: XCTestCase {
     }
 
     private func failure(_ error: RemoteFeedImageDataLoader.Error) -> FeedImageDataLoader.Result {
-        return .failure(error)
+        .failure(error)
     }
 }
