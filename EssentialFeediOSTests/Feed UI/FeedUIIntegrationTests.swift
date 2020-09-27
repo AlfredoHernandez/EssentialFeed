@@ -387,6 +387,6 @@ class FeedUIIntegrationTests: XCTestCase {
     }
 
     private func anyImageData() -> Data {
-        return UIImage.make(withColor: .red).pngData()!
+        UIImage.make(withColor: .red).pngData()!
     }
 }

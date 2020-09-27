@@ -97,7 +97,7 @@ class FeedImagePresenterTests: XCTestCase {
     }
 
     private var fail: (Data) -> AnyImage? {
-        return { _ in nil }
+        { _ in nil }
     }
 
     private struct AnyImage: Equatable {}

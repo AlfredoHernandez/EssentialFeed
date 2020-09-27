@@ -16,7 +16,7 @@ final class HTTPClientSpy: HTTPClient {
 
     var messages = [(url: URL, completion: (HTTPClient.Result) -> Void)]()
 
-    var requestedURLs: [URL] { messages.map { $0.url } }
+    var requestedURLs: [URL] { messages.map(\.url) }
 
     var cancelledURLs = [URL]()
 

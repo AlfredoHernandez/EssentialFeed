@@ -71,7 +71,7 @@ private class DebuggingHTTPClient: HTTPClient {
     }
 
     private func makeFeedData() -> Data {
-        return try! JSONSerialization.data(withJSONObject: ["items": [
+        try! JSONSerialization.data(withJSONObject: ["items": [
             ["id": UUID().uuidString, "image": "http://image.com"],
             ["id": UUID().uuidString, "image": "http://image.com"],
         ]])

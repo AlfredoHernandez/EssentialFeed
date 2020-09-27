@@ -39,6 +39,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func makeRemoteClient() -> HTTPClient {
-        return URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
+        URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     }
 }

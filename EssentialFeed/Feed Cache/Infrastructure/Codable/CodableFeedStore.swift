@@ -10,7 +10,7 @@ public final class CodableFeedStore: FeedStore {
         let timestamp: Date
 
         var localFeed: [LocalFeedImage] {
-            feed.map { $0.local }
+            feed.map(\.local)
         }
     }
 

@@ -12,6 +12,6 @@ public struct FeedImageViewModel<Image> {
     public let shouldRetry: Bool
 
     public var hasLocation: Bool {
-        return location != nil
+        location != nil
     }
 }
