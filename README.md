@@ -19,3 +19,11 @@
 [Feed Use Cases](./docs/use_cases.md)
 
 [Feed Image Use Cases](./docs/feed_image_use_cases.md)
+
+---
+
+# Dependencies
+
+## SwiftFormat
+
+This project uses [SwiftFormat](https://github.com/nicklockwood/SwiftFormat) for reformating the source code.
