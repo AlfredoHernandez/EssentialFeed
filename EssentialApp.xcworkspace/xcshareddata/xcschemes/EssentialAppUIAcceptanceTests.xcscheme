@@ -21,6 +21,11 @@
                BlueprintName = "EssentialAppUIAcceptanceTests"
                ReferencedContainer = "container:EssentialApp/EssentialApp.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "EssentialAppUIAcceptanceTests/test_onLaunch_displaysEmptyFeedWhenCustomerHasNoConnectivityAndNoCache()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>
