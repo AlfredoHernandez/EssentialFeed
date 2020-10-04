@@ -93,6 +93,7 @@
 		38EB42E4252A651C000C5E3E /* snapshots in Resources */ = {isa = PBXBuildFile; fileRef = 38EB42E3252A651C000C5E3E /* snapshots */; };
 		38EB42FE252A6862000C5E3E /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EB42FD252A6862000C5E3E /* UIImage+TestHelpers.swift */; };
 		38EB4305252A6ADC000C5E3E /* UITableView+HeaderSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EB4304252A6ADC000C5E3E /* UITableView+HeaderSizing.swift */; };
+		38EB4316252A79BA000C5E3E /* UIViewController+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EB4315252A79BA000C5E3E /* UIViewController+Snapshot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -238,6 +239,7 @@
 		38EB42E3252A651C000C5E3E /* snapshots */ = {isa = PBXFileReference; lastKnownFileType = folder; path = snapshots; sourceTree = "<group>"; };
 		38EB42FD252A6862000C5E3E /* UIImage+TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+TestHelpers.swift"; sourceTree = "<group>"; };
 		38EB4304252A6ADC000C5E3E /* UITableView+HeaderSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+HeaderSizing.swift"; sourceTree = "<group>"; };
+		38EB4315252A79BA000C5E3E /* UIViewController+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Snapshot.swift"; sourceTree = "<group>"; };
 		38FE5C6724D746A800CB5085 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -587,6 +589,7 @@
 			isa = PBXGroup;
 			children = (
 				38EB42FD252A6862000C5E3E /* UIImage+TestHelpers.swift */,
+				38EB4315252A79BA000C5E3E /* UIViewController+Snapshot.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -955,6 +958,7 @@
 			files = (
 				382874A024F302DC008447C2 /* XCTestCase+MemoryLeaksTracking.swift in Sources */,
 				38EB42DD252A5F92000C5E3E /* FeedSnapshotTests.swift in Sources */,
+				38EB4316252A79BA000C5E3E /* UIViewController+Snapshot.swift in Sources */,
 				38EB42FE252A6862000C5E3E /* UIImage+TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
