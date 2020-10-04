@@ -94,6 +94,7 @@
 		38EB42FE252A6862000C5E3E /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EB42FD252A6862000C5E3E /* UIImage+TestHelpers.swift */; };
 		38EB4305252A6ADC000C5E3E /* UITableView+HeaderSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EB4304252A6ADC000C5E3E /* UITableView+HeaderSizing.swift */; };
 		38EB4316252A79BA000C5E3E /* UIViewController+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EB4315252A79BA000C5E3E /* UIViewController+Snapshot.swift */; };
+		38EB431D252A7A29000C5E3E /* XCTestCase+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EB431C252A7A29000C5E3E /* XCTestCase+Snapshot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -240,6 +241,7 @@
 		38EB42FD252A6862000C5E3E /* UIImage+TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+TestHelpers.swift"; sourceTree = "<group>"; };
 		38EB4304252A6ADC000C5E3E /* UITableView+HeaderSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+HeaderSizing.swift"; sourceTree = "<group>"; };
 		38EB4315252A79BA000C5E3E /* UIViewController+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Snapshot.swift"; sourceTree = "<group>"; };
+		38EB431C252A7A29000C5E3E /* XCTestCase+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Snapshot.swift"; sourceTree = "<group>"; };
 		38FE5C6724D746A800CB5085 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -577,8 +579,8 @@
 		38E1484224EF3A9A00CC2805 /* EssentialFeediOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				38EB42FC252A683B000C5E3E /* Helpers */,
 				38EB42E3252A651C000C5E3E /* snapshots */,
+				38EB42FC252A683B000C5E3E /* Helpers */,
 				38E1484524EF3A9A00CC2805 /* Info.plist */,
 				38EB42DC252A5F92000C5E3E /* FeedSnapshotTests.swift */,
 			);
@@ -590,6 +592,7 @@
 			children = (
 				38EB42FD252A6862000C5E3E /* UIImage+TestHelpers.swift */,
 				38EB4315252A79BA000C5E3E /* UIViewController+Snapshot.swift */,
+				38EB431C252A7A29000C5E3E /* XCTestCase+Snapshot.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -958,6 +961,7 @@
 			files = (
 				382874A024F302DC008447C2 /* XCTestCase+MemoryLeaksTracking.swift in Sources */,
 				38EB42DD252A5F92000C5E3E /* FeedSnapshotTests.swift in Sources */,
+				38EB431D252A7A29000C5E3E /* XCTestCase+Snapshot.swift in Sources */,
 				38EB4316252A79BA000C5E3E /* UIViewController+Snapshot.swift in Sources */,
 				38EB42FE252A6862000C5E3E /* UIImage+TestHelpers.swift in Sources */,
 			);
