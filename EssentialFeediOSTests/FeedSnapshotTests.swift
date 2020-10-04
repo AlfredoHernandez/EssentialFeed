@@ -109,7 +109,13 @@ class FeedSnapshotTests: XCTestCase {
         }
 
         if snapshotData != storedSnapshotData {
-            let temporarySnapshotURL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
+            let failedSnapshotsDirectory = URL(fileURLWithPath: String(describing: file))
+                .deletingLastPathComponent()
+                .appendingPathComponent("failed_snapshots")
+            
+            try? FileManager.default.createDirectory(at: failedSnapshotsDirectory, withIntermediateDirectories: true)
+            
+            let temporarySnapshotURL = URL(fileURLWithPath: failedSnapshotsDirectory.absoluteString, isDirectory: true)
                 .appendingPathComponent(snapshotURL.lastPathComponent)
 
             try? snapshotData?.write(to: temporarySnapshotURL)

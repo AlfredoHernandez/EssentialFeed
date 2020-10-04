@@ -1,7 +1,3 @@
-
-# Created by https://www.toptal.com/developers/gitignore/api/xcode,swift,macos
-# Edit at https://www.toptal.com/developers/gitignore?templates=xcode,swift,macos
-
 ### macOS ###
 # General
 .DS_Store
@@ -118,9 +114,6 @@ iOSInjectionProject/
 # Xcode
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
-
-
-
 ## Gcc Patch
 /*.gcno
 
@@ -131,4 +124,5 @@ iOSInjectionProject/
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-# End of https://www.toptal.com/developers/gitignore/api/xcode,swift,macos
+# Snapshot tests
+EssentialFeediOSTests/failed_snapshots/
