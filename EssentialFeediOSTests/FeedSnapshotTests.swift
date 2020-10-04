@@ -12,7 +12,8 @@ class FeedSnapshotTests: XCTestCase {
 
         sut.display(emptyFeed())
 
-        assert(snapshot: sut.snapshot(), named: "empty_feed")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "empty_feed_light")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "empty_feed_dark")
     }
 
     func test_feedWithContent() {
@@ -20,7 +21,8 @@ class FeedSnapshotTests: XCTestCase {
 
         sut.display(feedWithContent())
 
-        assert(snapshot: sut.snapshot(), named: "feed_with_content")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "feed_with_content_light")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "feed_with_content_dark")
     }
 
     func test_feed_withError() {
@@ -28,7 +30,8 @@ class FeedSnapshotTests: XCTestCase {
 
         sut.display(.error(message: "This is a\nmulti-line\nerror message"))
 
-        assert(snapshot: sut.snapshot(), named: "feed_with_error_message")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "feed_with_error_message_light")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "feed_with_error_message_dark")
     }
 
     func test_feedWithFailedImageLoading() {
@@ -36,7 +39,8 @@ class FeedSnapshotTests: XCTestCase {
 
         sut.display(feedWithFailedImageLoading())
 
-        assert(snapshot: sut.snapshot(), named: "feed_with_failed_image_loading")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "feed_with_failed_image_loading_light")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "feed_with_failed_image_loading_dark")
     }
 
     // MARK: - Helpers
@@ -45,6 +49,8 @@ class FeedSnapshotTests: XCTestCase {
         let bundle = Bundle(for: FeedViewController.self)
         let storyboard = UIStoryboard(name: "Feed", bundle: bundle)
         let controller = storyboard.instantiateInitialViewController() as! FeedViewController
+        controller.tableView.showsVerticalScrollIndicator = false
+        controller.tableView.showsHorizontalScrollIndicator = false
         controller.loadViewIfNeeded()
         return controller
     }
@@ -112,9 +118,9 @@ class FeedSnapshotTests: XCTestCase {
             let failedSnapshotsDirectory = URL(fileURLWithPath: String(describing: file))
                 .deletingLastPathComponent()
                 .appendingPathComponent("failed_snapshots")
-            
+
             try? FileManager.default.createDirectory(at: failedSnapshotsDirectory, withIntermediateDirectories: true)
-            
+
             let temporarySnapshotURL = URL(fileURLWithPath: failedSnapshotsDirectory.absoluteString, isDirectory: true)
                 .appendingPathComponent(snapshotURL.lastPathComponent)
 
@@ -146,10 +152,61 @@ class FeedSnapshotTests: XCTestCase {
 }
 
 extension UIViewController {
+    func snapshot(for configuration: SnapshotConfiguration) -> UIImage {
+        SnapshotWindow(configuration: configuration, root: self).snapshot()
+    }
+}
+
+struct SnapshotConfiguration {
+    let size: CGSize
+    let safeAreaInsets: UIEdgeInsets
+    let layoutMargins: UIEdgeInsets
+    let traitCollection: UITraitCollection
+
+    static func iPhone8(style: UIUserInterfaceStyle) -> SnapshotConfiguration {
+        SnapshotConfiguration(
+            size: CGSize(width: 375, height: 667),
+            safeAreaInsets: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0),
+            layoutMargins: UIEdgeInsets(top: 20, left: 16, bottom: 0, right: 16),
+            traitCollection: UITraitCollection(traitsFrom: [
+                .init(forceTouchCapability: .available),
+                .init(layoutDirection: .leftToRight),
+                .init(preferredContentSizeCategory: .medium),
+                .init(userInterfaceIdiom: .phone),
+                .init(horizontalSizeClass: .compact),
+                .init(verticalSizeClass: .regular),
+                .init(displayScale: 2),
+                .init(displayGamut: .P3),
+                .init(userInterfaceStyle: style),
+            ])
+        )
+    }
+}
+
+private final class SnapshotWindow: UIWindow {
+    private var configuration: SnapshotConfiguration = .iPhone8(style: .light)
+
+    convenience init(configuration: SnapshotConfiguration, root: UIViewController) {
+        self.init(frame: CGRect(origin: .zero, size: configuration.size))
+        self.configuration = configuration
+        layoutMargins = configuration.layoutMargins
+        rootViewController = root
+        isHidden = false
+        root.view.layoutMargins = configuration.layoutMargins
+    }
+
+    override var safeAreaInsets: UIEdgeInsets {
+        configuration.safeAreaInsets
+    }
+
+    override var traitCollection: UITraitCollection {
+        UITraitCollection(traitsFrom: [super.traitCollection, configuration.traitCollection])
+    }
+
     func snapshot() -> UIImage {
-        let rendered = UIGraphicsImageRenderer(bounds: view.bounds)
-        return rendered.image { action in
-            view.layer.render(in: action.cgContext)
+        let renderer = UIGraphicsImageRenderer(bounds: bounds, format: .init(for: traitCollection))
+        return renderer.image { action in
+            layer.render(in: action.cgContext)
         }
     }
 }
