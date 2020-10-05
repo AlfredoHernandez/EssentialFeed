@@ -31,13 +31,7 @@ extension XCTestCase {
         }
 
         if snapshotData != storedSnapshotData {
-            let failedSnapshotsDirectory = URL(fileURLWithPath: String(describing: file))
-                .deletingLastPathComponent()
-                .appendingPathComponent("failed_snapshots")
-
-            try? FileManager.default.createDirectory(at: failedSnapshotsDirectory, withIntermediateDirectories: true)
-
-            let temporarySnapshotURL = URL(fileURLWithPath: failedSnapshotsDirectory.absoluteString, isDirectory: true)
+            let temporarySnapshotURL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
                 .appendingPathComponent(snapshotURL.lastPathComponent)
 
             try? snapshotData?.write(to: temporarySnapshotURL)
