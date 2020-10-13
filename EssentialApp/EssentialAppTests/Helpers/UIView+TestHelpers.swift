@@ -1,8 +1,4 @@
 //
-//  UIView+TestHelpers.swift
-//  EssentialAppTests
-//
-//  Created by Jesús Alfredo Hernández Alarcón on 13/10/20.
 //  Copyright © 2020 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
