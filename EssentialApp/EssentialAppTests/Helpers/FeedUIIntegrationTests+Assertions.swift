@@ -8,6 +8,8 @@ import XCTest
 
 extension FeedUIIntegrationTests {
     func assertThat(_ sut: FeedViewController, isRendering feed: [FeedImage], file: StaticString = #filePath, line: UInt = #line) {
+        sut.view.enforceLayoutCycle()
+
         guard sut.numberOfRenderedFeedImageViews() == feed.count else {
             return XCTFail("Expected \(feed.count) images, got \(sut.numberOfRenderedFeedImageViews()) instead.", file: file, line: line)
         }
@@ -15,6 +17,8 @@ extension FeedUIIntegrationTests {
         feed.enumerated().forEach { index, image in
             assertThat(sut, hasViewConfiguredFor: image, at: index, file: file, line: line)
         }
+
+        executeRunLoopToCleanUpReferences()
     }
 
     func assertThat(
@@ -54,5 +58,9 @@ extension FeedUIIntegrationTests {
             file: file,
             line: line
         )
+    }
+
+    private func executeRunLoopToCleanUpReferences() {
+        RunLoop.current.run(until: Date())
     }
 }

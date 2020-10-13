@@ -106,13 +106,14 @@ private class ImageStub: FeedImageCellControllerDelegate {
     weak var controller: FeedImageCellController?
 
     init(description: String?, location: String?, image: UIImage?) {
-        viewModel = FeedImageViewModel(
+        let extractedExpr = FeedImageViewModel(
             description: description,
             location: location,
             image: image,
             isLoading: false,
             shouldRetry: image == nil
         )
+        viewModel = extractedExpr
     }
 
     func didRequestImage() {
