@@ -50,6 +50,7 @@
 		3857AFA3251C38E8004CC829 /* FeedImageDataLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3857AFA2251C38E8004CC829 /* FeedImageDataLoaderSpy.swift */; };
 		3857AFA6251C39B4004CC829 /* XCTestCase+FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3857AFA5251C39B4004CC829 /* XCTestCase+FeedImageDataLoader.swift */; };
 		3857AFB5251C41B2004CC829 /* FeedImageDataLoaderCacheDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3857AFB4251C41B2004CC829 /* FeedImageDataLoaderCacheDecorator.swift */; };
+		38982DF52536322E0059DC3C /* UIView+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38982DF42536322E0059DC3C /* UIView+TestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		3857AFA2251C38E8004CC829 /* FeedImageDataLoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoaderSpy.swift; sourceTree = "<group>"; };
 		3857AFA5251C39B4004CC829 /* XCTestCase+FeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FeedImageDataLoader.swift"; sourceTree = "<group>"; };
 		3857AFB4251C41B2004CC829 /* FeedImageDataLoaderCacheDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoaderCacheDecorator.swift; sourceTree = "<group>"; };
+		38982DF42536322E0059DC3C /* UIView+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+TestHelpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 				3857AFA5251C39B4004CC829 /* XCTestCase+FeedImageDataLoader.swift */,
 				383FAB2025253F3100C70BB0 /* HTTPClientStub.swift */,
 				383FAB2325253F9400C70BB0 /* InMemoryFeedStore.swift */,
+				38982DF42536322E0059DC3C /* UIView+TestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				3857AF77251BE9D7004CC829 /* FeedImageDataLoaderWithFallbackCompositeTests.swift in Sources */,
 				383FAB2125253F3100C70BB0 /* HTTPClientStub.swift in Sources */,
 				383FAABC252148CE00C70BB0 /* FeedImageCell+TestHelpers.swift in Sources */,
+				38982DF52536322E0059DC3C /* UIView+TestHelpers.swift in Sources */,
 				383FAAB9252148CE00C70BB0 /* UIButton+TestHelpers.swift in Sources */,
 				38253CD325119DDA006F39F4 /* FeedLoaderWithFallbackCompositeTests.swift in Sources */,
 				383FAADA25214E9C00C70BB0 /* FeedAcceptanceTests.swift in Sources */,
