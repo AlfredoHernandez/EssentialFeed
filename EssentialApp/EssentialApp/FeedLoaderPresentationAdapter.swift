@@ -10,7 +10,7 @@ import Foundation
 final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
     private let feedLoader: () -> FeedLoader.Publisher
     var presenter: FeedPresenter?
-    var cancellables = Set<AnyCancellable>()
+    var cancellable: AnyCancellable?
 
     init(feedLoader: @escaping () -> FeedLoader.Publisher) {
         self.feedLoader = feedLoader
@@ -19,7 +19,7 @@ final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
     func didRequestFeedRefresh() {
         presenter?.didStartLoadingFeed()
 
-        feedLoader()
+        cancellable = feedLoader()
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case let .failure(error):
@@ -28,6 +28,6 @@ final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
                 }
             }, receiveValue: { [weak self] feed in
                 self?.presenter?.didFinishLoadingFeed(with: feed)
-            }).store(in: &cancellables)
+            })
     }
 }
