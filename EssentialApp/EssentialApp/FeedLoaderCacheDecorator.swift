@@ -23,7 +23,7 @@ public class FeedLoaderCacheDecorator: FeedLoader {
     }
 }
 
-private extension FeedCache {
+public extension FeedCache {
     func saveIgnoringResult(_ feed: [FeedImage]) {
         save(feed) { _ in }
     }
