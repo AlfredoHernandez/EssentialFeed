@@ -1,14 +1,12 @@
 #  Essential Feed iOS Application
 
-**Develop branch status:** [![Build Status](https://travis-ci.com/AlfredoHernandez/EssentialFeed.svg?branch=develop)](https://travis-ci.com/AlfredoHernandez/EssentialFeed)
+**Develop branch status:**
+![CI-macOS](https://github.com/AlfredoHernandez/EssentialFeed/workflows/CI-macOS/badge.svg)
+![CI-iOS](https://github.com/AlfredoHernandez/EssentialFeed/workflows/CI-iOS/badge.svg)
 
 ## App Architecture
 
 ![EssentialFeed](./images/architecture_overview.png)
-
-## Loaders Architecture
-
-![EssentialFeed](./images/loaders_architecture_overview.png)
 
 ## App Requirements
 
@@ -21,9 +19,3 @@
 [Feed Image Use Cases](./docs/feed_image_use_cases.md)
 
 ---
-
-# Dependencies
-
-## SwiftFormat
-
-This project uses [SwiftFormat](https://github.com/nicklockwood/SwiftFormat) for reformating the source code.
