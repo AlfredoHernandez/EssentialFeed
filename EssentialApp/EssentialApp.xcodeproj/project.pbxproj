@@ -41,6 +41,7 @@
 		3857AFA3251C38E8004CC829 /* FeedImageDataLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3857AFA2251C38E8004CC829 /* FeedImageDataLoaderSpy.swift */; };
 		3857AFA6251C39B4004CC829 /* XCTestCase+FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3857AFA5251C39B4004CC829 /* XCTestCase+FeedImageDataLoader.swift */; };
 		38982DF52536322E0059DC3C /* UIView+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38982DF42536322E0059DC3C /* UIView+TestHelpers.swift */; };
+		38D183BA2537D10B0029486A /* CombineHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D183B92537D10B0029486A /* CombineHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		3857AFA2251C38E8004CC829 /* FeedImageDataLoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoaderSpy.swift; sourceTree = "<group>"; };
 		3857AFA5251C39B4004CC829 /* XCTestCase+FeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FeedImageDataLoader.swift"; sourceTree = "<group>"; };
 		38982DF42536322E0059DC3C /* UIView+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+TestHelpers.swift"; sourceTree = "<group>"; };
+		38D183B92537D10B0029486A /* CombineHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				38253C9E251194D9006F39F4 /* Assets.xcassets */,
 				38253CA0251194D9006F39F4 /* LaunchScreen.storyboard */,
 				38253CA3251194D9006F39F4 /* Info.plist */,
+				38D183B92537D10B0029486A /* CombineHelpers.swift */,
 			);
 			path = EssentialApp;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				383FAA902521487E00C70BB0 /* WeakRefVirtualProxy.swift in Sources */,
 				38253C98251194D7006F39F4 /* SceneDelegate.swift in Sources */,
 				383FAA952521487E00C70BB0 /* FeedViewAdapter.swift in Sources */,
+				38D183BA2537D10B0029486A /* CombineHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
