@@ -1,6 +1,9 @@
 #  Essential Feed iOS Application
 
-**Develop branch status:**
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AlfredoHernandez/AlfredoHernandez/main/alfredo_hdz.png" />
+</p>
+
 ![CI-macOS](https://github.com/AlfredoHernandez/EssentialFeed/workflows/CI-macOS/badge.svg)
 ![CI-iOS](https://github.com/AlfredoHernandez/EssentialFeed/workflows/CI-iOS/badge.svg)
 
