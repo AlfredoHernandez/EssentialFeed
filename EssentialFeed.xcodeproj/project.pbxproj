@@ -344,12 +344,13 @@
 		383CCEFF24D0CFE400D89226 /* EssentialFeed */ = {
 			isa = PBXGroup;
 			children = (
-				385C631F2558AAAC008C39BF /* Image Comments Feature */,
 				383CCF0124D0CFE400D89226 /* Info.plist */,
 				387B1F3324D221D800CDB3FB /* Feed API */,
 				38A3028D24E0BAE90073C043 /* Feed Cache */,
 				383CCF1B24D0D37100D89226 /* Feed Feature */,
 				389EA867250AC6DD0031DC29 /* Feed Presentation */,
+				385C63362558B2AF008C39BF /* Image Comments API */,
+				385C631F2558AAAC008C39BF /* Image Comments Feature */,
 			);
 			path = EssentialFeed;
 			sourceTree = "<group>";
@@ -363,6 +364,7 @@
 				38FE5C6624D744D200CB5085 /* Feed API */,
 				38C26D0524DB9A9C00389E35 /* Feed Cache */,
 				389EA85D250ABA3C0031DC29 /* Feed Presentation */,
+				385C63372558B300008C39BF /* Image Comments API */,
 				38AF875D24D79867005D3834 /* Helpers */,
 			);
 			path = EssentialFeedTests;
@@ -428,6 +430,23 @@
 			path = "Shared API Infra";
 			sourceTree = "<group>";
 		};
+		385C63362558B2AF008C39BF /* Image Comments API */ = {
+			isa = PBXGroup;
+			children = (
+				385C63072558A418008C39BF /* RemoteImageCommentsLoader.swift */,
+				385C63182558A51A008C39BF /* ImageCommentsMapper.swift */,
+			);
+			path = "Image Comments API";
+			sourceTree = "<group>";
+		};
+		385C63372558B300008C39BF /* Image Comments API */ = {
+			isa = PBXGroup;
+			children = (
+				38D5DA23250AE6E700FD5D19 /* LoadFeedImageDataFromRemoteUseCaseTests.swift */,
+			);
+			path = "Image Comments API";
+			sourceTree = "<group>";
+		};
 		3868FB6124E9DD8200DF19F6 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,9 +494,7 @@
 				3891A8BD250E962C00ABAEB2 /* RemoteFeedImageDataLoader.swift */,
 				38A3029224E0C7A80073C043 /* RemoteFeedItem.swift */,
 				387B1F3424D221F900CDB3FB /* RemoteFeedLoader.swift */,
-				385C63072558A418008C39BF /* RemoteImageCommentsLoader.swift */,
 				3891A8BF250EA58C00ABAEB2 /* Helpers */,
-				385C63182558A51A008C39BF /* ImageCommentsMapper.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -662,7 +679,6 @@
 			children = (
 				383CCF1C24D0D8D500D89226 /* LoadFeedFromRemoteUseCaseTests.swift */,
 				385C63002558A2D5008C39BF /* LoadImageCommentsFromRemoteUseCaseTests.swift */,
-				38D5DA23250AE6E700FD5D19 /* LoadFeedImageDataFromRemoteUseCaseTests.swift */,
 				3891A8BA250E93F700ABAEB2 /* Helpers */,
 			);
 			path = "Feed API";
