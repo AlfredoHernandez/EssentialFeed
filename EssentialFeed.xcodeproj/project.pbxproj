@@ -446,7 +446,7 @@
 		385C63372558B300008C39BF /* Image Comments API */ = {
 			isa = PBXGroup;
 			children = (
-				38D5DA23250AE6E700FD5D19 /* LoadFeedImageDataFromRemoteUseCaseTests.swift */,
+				385C63002558A2D5008C39BF /* LoadImageCommentsFromRemoteUseCaseTests.swift */,
 			);
 			path = "Image Comments API";
 			sourceTree = "<group>";
@@ -681,7 +681,7 @@
 			isa = PBXGroup;
 			children = (
 				383CCF1C24D0D8D500D89226 /* LoadFeedFromRemoteUseCaseTests.swift */,
-				385C63002558A2D5008C39BF /* LoadImageCommentsFromRemoteUseCaseTests.swift */,
+				38D5DA23250AE6E700FD5D19 /* LoadFeedImageDataFromRemoteUseCaseTests.swift */,
 				3891A8BA250E93F700ABAEB2 /* Helpers */,
 			);
 			path = "Feed API";
