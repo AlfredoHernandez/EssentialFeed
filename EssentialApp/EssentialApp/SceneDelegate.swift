@@ -43,7 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             URL(
                 string: "https://static1.squarespace.com/static/5891c5b8d1758ec68ef5dbc2/t/5db4155a4fbade21d17ecd28/1572083034355/essential_app_feed.json"
             )!
-        let remoteFeedLoader = RemoteFeedLoader(url: remoteURL, client: httpClient)
+        let remoteFeedLoader = RemoteLoader(url: remoteURL, client: httpClient, mapper: FeedItemMapper.map)
         let loaderAsPublisher = remoteFeedLoader
             .loadPublisher()
             .catching(to: localFeedLoader)
@@ -74,4 +74,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
-extension RemoteFeedLoader: FeedLoader where Resource == [FeedImage] {}
+extension RemoteLoader: FeedLoader where Resource == [FeedImage] {}
