@@ -11,6 +11,12 @@
 
 ![EssentialFeed](./images/architecture_overview.png)
 
+## Architecture 
+
+The `FeedLoader` protocol doesn't exists anymore, so we reject dependencies. Now, our architecture looks like this:
+
+![Dependency Rejection](./images/dependency-rejection.png)
+
 ## App Requirements
 
 [BDD Specs](./docs/BDD_specs.md)
