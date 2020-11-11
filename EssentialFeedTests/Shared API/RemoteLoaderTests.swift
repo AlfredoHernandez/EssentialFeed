@@ -70,7 +70,7 @@ final class RemoteLoaderTests: XCTestCase {
         var capturedResults = [RemoteLoader<String>.Result]()
         sut?.load { capturedResults.append($0) }
         sut = nil
-        client.complete(withStatusCode: 200, data: makeItemsJSON([]))
+        client.complete(withStatusCode: 200, data: anyData())
 
         XCTAssertTrue(capturedResults.isEmpty)
     }
@@ -92,28 +92,6 @@ final class RemoteLoaderTests: XCTestCase {
 
     private func failure(_ error: RemoteLoader<String>.Error) -> RemoteLoader<String>.Result {
         .failure(error)
-    }
-
-    private func makeItem(
-        id: UUID,
-        description: String? = nil,
-        location: String? = nil,
-        imageURL: URL
-    ) -> (model: FeedImage, json: [String: Any]) {
-        let item = FeedImage(id: id, description: description, location: location, url: imageURL)
-        let json = [
-            "id": item.id.uuidString,
-            "description": item.description,
-            "location": item.location,
-            "image": item.url.absoluteString,
-        ].compactMapValues { $0 }
-        return (item, json)
-    }
-
-    /// Serializes JSON `FeedItem`s representation into data
-    private func makeItemsJSON(_ items: [[String: Any]]) -> Data {
-        let json = ["items": items]
-        return try! JSONSerialization.data(withJSONObject: json)
     }
 
     private func expect(
