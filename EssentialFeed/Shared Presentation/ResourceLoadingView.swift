@@ -4,6 +4,6 @@
 
 import Foundation
 
-public struct FeedLoadingViewModel {
-    public let isLoading: Bool
+public protocol ResourceLoadingView {
+    func display(_ viewModel: ResourceLoadingViewModel)
 }
