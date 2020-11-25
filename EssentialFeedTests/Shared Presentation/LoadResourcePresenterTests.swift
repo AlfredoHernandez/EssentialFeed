@@ -5,7 +5,7 @@
 import EssentialFeed
 import XCTest
 
-final class LoadResourcePresenterTestsTests: XCTestCase {
+final class LoadResourcePresenterTests: XCTestCase {
     func test_init_doesNotSendMessagesToView() {
         let (_, view) = makeSUT()
 
@@ -30,6 +30,19 @@ final class LoadResourcePresenterTestsTests: XCTestCase {
 
         XCTAssertEqual(view.messages, [
             .display(resourceViewModel: "a resource view model"),
+            .display(isLoading: false),
+        ])
+    }
+
+    func test_didFinishLoadingWithMapperError_displaysLocalizedErrorMessageAndStopsLoading() {
+        let (sut, view) = makeSUT(mapper: { _ in
+            throw anyNSError()
+        })
+
+        sut.didFinishLoading(with: "a resource")
+
+        XCTAssertEqual(view.messages, [
+            .display(errorMessage: localized("GENERIC_CONNECTION_ERROR")),
             .display(isLoading: false),
         ])
     }
