@@ -13,9 +13,17 @@
 
 ## Architecture 
 
-The `FeedLoader` protocol doesn't exists anymore, so we reject dependencies. Now, our architecture looks like this:
+### Business Logic (loaders)
+
+The `FeedLoader` protocol doesn't exists anymore, we reject dependencies. Now, our architecture for business logic looks like this:
 
 ![Dependency Rejection](./images/dependency-rejection.png)
+
+### Presentation
+
+We are reusing the presentation for both `Feed` and `Image Comments`
+
+![Reusable Presentation](./images/reusable-presentation.png)
 
 ## App Requirements
 
