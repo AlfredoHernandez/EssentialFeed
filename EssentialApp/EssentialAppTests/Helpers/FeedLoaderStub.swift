@@ -4,14 +4,14 @@
 
 import EssentialFeed
 
-class FeedLoaderStub: FeedLoader {
-    private let result: FeedLoader.Result
+class FeedLoaderStub {
+    private let result: Result<[FeedImage], Error>
 
-    init(result: FeedLoader.Result) {
+    init(result: Result<[FeedImage], Error>) {
         self.result = result
     }
 
-    func load(completion: @escaping (FeedLoader.Result) -> Void) {
+    func load(completion: @escaping (Result<[FeedImage], Error>) -> Void) {
         completion(result)
     }
 }

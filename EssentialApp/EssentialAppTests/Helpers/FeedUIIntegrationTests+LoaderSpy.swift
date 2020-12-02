@@ -2,27 +2,30 @@
 //  Copyright © 2020 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
+import Combine
 import EssentialFeed
 import EssentialFeediOS
 import Foundation
 
-class FeedLoaderSpy: FeedLoader, FeedImageDataLoader {
+class FeedLoaderSpy: FeedImageDataLoader {
     // MARK: - Feed Loader
 
-    var feedRequests = [(FeedLoader.Result) -> Void]()
+    var feedRequests = [PassthroughSubject<[FeedImage], Swift.Error>]()
     var loadFeedCallCount: Int { feedRequests.count }
 
-    func load(completion: @escaping (FeedLoader.Result) -> Void) {
-        feedRequests.append(completion)
+    func loadPublisher() -> AnyPublisher<[FeedImage], Swift.Error> {
+        let publisher = PassthroughSubject<[FeedImage], Swift.Error>()
+        feedRequests.append(publisher)
+        return publisher.eraseToAnyPublisher()
     }
 
     func completeFeedLoading(with feed: [FeedImage] = [], at index: Int = 0) {
-        feedRequests[index](.success(feed))
+        feedRequests[index].send(feed)
     }
 
     func completeFeedLoadingWithError(at index: Int = 0) {
         let error = NSError(domain: "an error", code: 0)
-        feedRequests[index](.failure(error))
+        feedRequests[index].send(completion: .failure(error))
     }
 
     // MARK: - Feed Image Data Loader

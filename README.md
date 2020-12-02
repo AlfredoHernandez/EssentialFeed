@@ -1,14 +1,29 @@
 #  Essential Feed iOS Application
 
-**Develop branch status:** [![Build Status](https://travis-ci.com/AlfredoHernandez/EssentialFeed.svg?branch=develop)](https://travis-ci.com/AlfredoHernandez/EssentialFeed)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AlfredoHernandez/AlfredoHernandez/main/alfredo_hdz.png" />
+</p>
+
+![CI-macOS](https://github.com/AlfredoHernandez/EssentialFeed/workflows/CI-macOS/badge.svg)
+![CI-iOS](https://github.com/AlfredoHernandez/EssentialFeed/workflows/CI-iOS/badge.svg)
 
 ## App Architecture
 
 ![EssentialFeed](./images/architecture_overview.png)
 
-## Loaders Architecture
+## Architecture 
 
-![EssentialFeed](./images/loaders_architecture_overview.png)
+### Business Logic (loaders)
+
+The `FeedLoader` protocol doesn't exists anymore, we reject dependencies. Now, our architecture for business logic looks like this:
+
+![Dependency Rejection](./images/dependency-rejection.png)
+
+### Presentation
+
+We are reusing the presentation for both `Feed` and `Image Comments`
+
+![Reusable Presentation](./images/reusable-presentation.png)
 
 ## App Requirements
 
@@ -21,9 +36,3 @@
 [Feed Image Use Cases](./docs/feed_image_use_cases.md)
 
 ---
-
-# Dependencies
-
-## SwiftFormat
-
-This project uses [SwiftFormat](https://github.com/nicklockwood/SwiftFormat) for reformating the source code.
