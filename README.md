@@ -25,6 +25,13 @@ We are reusing the presentation for both `Feed` and `Image Comments`
 
 ![Reusable Presentation](./images/reusable-presentation.png)
 
+## UI
+
+We are reusing the same table view to display the feed and comments
+
+
+![Reusable UI](./images/reusable-ui.png)
+
 ## Snapshot Testing
 
 **Please make sure use an `iPhone 12 Mini` simulator to run the snapshot tests. Otherwise tests will fail.**
