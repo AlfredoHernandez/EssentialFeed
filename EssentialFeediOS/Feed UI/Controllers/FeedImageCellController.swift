@@ -31,7 +31,7 @@ public final class FeedImageCellController: NSObject {
     }
 }
 
-extension FeedImageCellController: CellController {
+extension FeedImageCellController: UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching {
     public func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int { 1 }
 
     public func tableView(_ tableView: UITableView, cellForRowAt _: IndexPath) -> UITableViewCell {
