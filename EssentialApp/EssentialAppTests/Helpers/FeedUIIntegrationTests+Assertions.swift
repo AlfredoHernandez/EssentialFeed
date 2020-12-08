@@ -7,7 +7,7 @@ import EssentialFeediOS
 import XCTest
 
 extension FeedUIIntegrationTests {
-    func assertThat(_ sut: FeedViewController, isRendering feed: [FeedImage], file: StaticString = #filePath, line: UInt = #line) {
+    func assertThat(_ sut: ListViewController, isRendering feed: [FeedImage], file: StaticString = #filePath, line: UInt = #line) {
         sut.view.enforceLayoutCycle()
 
         guard sut.numberOfRenderedFeedImageViews() == feed.count else {
@@ -22,7 +22,7 @@ extension FeedUIIntegrationTests {
     }
 
     func assertThat(
-        _ sut: FeedViewController,
+        _ sut: ListViewController,
         hasViewConfiguredFor image: FeedImage,
         at index: Int,
         file: StaticString = #filePath,
