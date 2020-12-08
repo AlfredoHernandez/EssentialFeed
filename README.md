@@ -27,7 +27,7 @@ We are reusing the presentation for both `Feed` and `Image Comments`
 
 ## Snapshot Testing
 
-**Please make sure use an iPhone 11 simulator to run the snapshot tests. Otherwise tests will fail.**
+**Please make sure use an `iPhone 12 Mini` simulator to run the snapshot tests. Otherwise tests will fail.**
 
 ## App Requirements
 
