@@ -25,6 +25,10 @@ We are reusing the presentation for both `Feed` and `Image Comments`
 
 ![Reusable Presentation](./images/reusable-presentation.png)
 
+## Snapshot Testing
+
+**Please make sure use an iPhone 11 simulator to run the snapshot tests. Otherwise tests will fail.**
+
 ## App Requirements
 
 [BDD Specs](./docs/BDD_specs.md)
