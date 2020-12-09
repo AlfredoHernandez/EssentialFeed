@@ -5,9 +5,11 @@
 </p>
 
 [![Swift 5.3](https://img.shields.io/badge/swift-5.3-green.svg?color=g&style=for-the-badge)](https://developer.apple.com/swift)
-[![License](https://img.shields.io/github/license/AlfredoHernandez/EssentialFeed?color=red&style=for-the-badge)](MIT)
+[![License](https://img.shields.io/github/license/AlfredoHernandez/EssentialFeed?color=informational&style=for-the-badge)](MIT)
 ![macOS](https://img.shields.io/github/workflow/status/AlfredoHernandez/EssentialFeed/CI-macOS/develop?label=CI-macOS&style=for-the-badge)
 ![iOS](https://img.shields.io/github/workflow/status/AlfredoHernandez/EssentialFeed/CI-iOS/develop?label=CI-iOS&style=for-the-badge)
+![issues](https://img.shields.io/github/issues/AlfredoHernandez/EssentialFeed?color=blue&style=for-the-badge)
+[![GitHub forks](https://img.shields.io/github/forks/AlfredoHernandez/EssentialFeed?style=for-the-badge&color=blueviolet)](https://github.com/AlfredoHernandez/EssentialFeed/network)
 
 ## App Architecture
 
