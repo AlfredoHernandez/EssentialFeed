@@ -41,10 +41,10 @@ extension LocalFeedLoader: FeedCache {
 
 // MARK: - Load
 
-extension LocalFeedLoader {
-    public typealias LoadResult = Swift.Result<[FeedImage], Error>
+public extension LocalFeedLoader {
+    typealias LoadResult = Swift.Result<[FeedImage], Error>
 
-    public func load(completion: @escaping (LoadResult) -> Void) {
+    func load(completion: @escaping (LoadResult) -> Void) {
         store.retrieve { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -61,10 +61,10 @@ extension LocalFeedLoader {
 
 // MARK: - Validate
 
-extension LocalFeedLoader {
-    public typealias ValidationResult = Result<Void, Error>
+public extension LocalFeedLoader {
+    typealias ValidationResult = Result<Void, Error>
 
-    public func validateCache(completion: @escaping (ValidationResult) -> Void) {
+    func validateCache(completion: @escaping (ValidationResult) -> Void) {
         store.retrieve { [weak self] result in
             guard let self = self else { return }
             switch result {

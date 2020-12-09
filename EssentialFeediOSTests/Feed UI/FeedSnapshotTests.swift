@@ -14,6 +14,10 @@ class FeedSnapshotTests: XCTestCase {
 
         assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "feed_with_content_light")
         assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "feed_with_content_dark")
+        assert(
+            snapshot: sut.snapshot(for: .iPhone8(style: .light, contentSize: .extraExtraExtraLarge)),
+            named: "feed_with_content_light_extraExtraExtraLarge"
+        )
     }
 
     func test_feedWithFailedImageLoading() {
@@ -23,6 +27,10 @@ class FeedSnapshotTests: XCTestCase {
 
         assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "feed_with_failed_image_loading_light")
         assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "feed_with_failed_image_loading_dark")
+        assert(
+            snapshot: sut.snapshot(for: .iPhone8(style: .light, contentSize: .extraExtraExtraLarge)),
+            named: "feed_with_failed_image_loading_light_extraExtraExtraLarge"
+        )
     }
 
     // MARK: - Helpers
@@ -70,10 +78,10 @@ class FeedSnapshotTests: XCTestCase {
 
 private extension ListViewController {
     func display(_ stubs: [ImageStub]) {
-        let cells = stubs.map { stub -> FeedImageCellController in
+        let cells = stubs.map { stub -> CellController in
             let cellController = FeedImageCellController(viewModel: stub.viewModel, delegate: stub)
             stub.controller = cellController
-            return cellController
+            return CellController(id: UUID(), cellController)
         }
         display(cells)
     }
