@@ -1,9 +1,5 @@
 #  Essential Feed iOS Application
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/AlfredoHernandez/AlfredoHernandez/main/alfredo_hdz.png" />
-</p>
-
 [![Swift 5.3](https://img.shields.io/badge/swift-5.3-green.svg?color=g&style=for-the-badge)](https://developer.apple.com/swift)
 [![License](https://img.shields.io/github/license/AlfredoHernandez/EssentialFeed?color=informational&style=for-the-badge)](MIT)
 ![macOS](https://img.shields.io/github/workflow/status/AlfredoHernandez/EssentialFeed/CI-macOS/develop?label=CI-macOS&style=for-the-badge)
