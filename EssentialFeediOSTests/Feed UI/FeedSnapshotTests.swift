@@ -1,5 +1,5 @@
 //
-//  Copyright © 2020 Jesús Alfredo Hernández Alarcón. All rights reserved.
+//  Copyright © 2021 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
 @testable import EssentialFeed
@@ -12,10 +12,10 @@ class FeedSnapshotTests: XCTestCase {
 
         sut.display(feedWithContent())
 
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "feed_with_content_light")
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "feed_with_content_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone12Mini(style: .light)), named: "feed_with_content_light")
+        assert(snapshot: sut.snapshot(for: .iPhone12Mini(style: .dark)), named: "feed_with_content_dark")
         assert(
-            snapshot: sut.snapshot(for: .iPhone8(style: .light, contentSize: .extraExtraExtraLarge)),
+            snapshot: sut.snapshot(for: .iPhone12Mini(style: .light, contentSize: .extraExtraExtraLarge)),
             named: "feed_with_content_light_extraExtraExtraLarge"
         )
     }
@@ -25,10 +25,10 @@ class FeedSnapshotTests: XCTestCase {
 
         sut.display(feedWithFailedImageLoading())
 
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "feed_with_failed_image_loading_light")
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "feed_with_failed_image_loading_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone12Mini(style: .light)), named: "feed_with_failed_image_loading_light")
+        assert(snapshot: sut.snapshot(for: .iPhone12Mini(style: .dark)), named: "feed_with_failed_image_loading_dark")
         assert(
-            snapshot: sut.snapshot(for: .iPhone8(style: .light, contentSize: .extraExtraExtraLarge)),
+            snapshot: sut.snapshot(for: .iPhone12Mini(style: .light, contentSize: .extraExtraExtraLarge)),
             named: "feed_with_failed_image_loading_light_extraExtraExtraLarge"
         )
     }
