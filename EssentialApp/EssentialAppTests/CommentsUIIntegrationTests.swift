@@ -9,12 +9,12 @@ import UIKit
 import XCTest
 
 final class CommentsUIIntegrationTests: FeedUIIntegrationTests {
-    override func test_feedView_hasTitle() {
+    func test_commentsView_hasTitle() {
         let (sut, _) = makeSUT()
 
         sut.loadViewIfNeeded()
 
-        XCTAssertEqual(sut.title, feedTitle)
+        XCTAssertEqual(sut.title, commentsTitle)
     }
 
     override func test_loadFeedActions_requestsFeedFromLoader() {
@@ -141,5 +141,11 @@ final class CommentsUIIntegrationTests: FeedUIIntegrationTests {
 
     private func anyImageData() -> Data {
         UIImage.make(withColor: .red).pngData()!
+    }
+}
+
+extension CommentsUIIntegrationTests {
+    var commentsTitle: String {
+        ImageCommentsPresenter.title
     }
 }
