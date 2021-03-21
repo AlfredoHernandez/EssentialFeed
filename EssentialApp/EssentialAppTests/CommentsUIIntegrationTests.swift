@@ -2,6 +2,7 @@
 //  Copyright © 2021 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
+import Combine
 import EssentialApp
 import EssentialFeed
 import EssentialFeediOS
@@ -17,18 +18,18 @@ final class CommentsUIIntegrationTests: FeedUIIntegrationTests {
         XCTAssertEqual(sut.title, commentsTitle)
     }
 
-    override func test_loadFeedActions_requestsFeedFromLoader() {
+    func test_loadCommentsActions_requestsCommentsFromLoader() {
         let (sut, loader) = makeSUT()
-        XCTAssertEqual(loader.loadFeedCallCount, 0, "Expected no loading request before view is loaded.")
+        XCTAssertEqual(loader.loadCommentsCallCount, 0, "Expected no loading request before view is loaded.")
 
         sut.loadViewIfNeeded()
-        XCTAssertEqual(loader.loadFeedCallCount, 1, "Expected a loading request one view is loaded.")
+        XCTAssertEqual(loader.loadCommentsCallCount, 1, "Expected a loading request one view is loaded.")
 
-        sut.simulateUserInitiatedFeedReload()
-        XCTAssertEqual(loader.loadFeedCallCount, 2, "Expected another loading request once user initiates a load.")
+        sut.simulateUserInitiatedReload()
+        XCTAssertEqual(loader.loadCommentsCallCount, 2, "Expected another loading request once user initiates a load.")
 
-        sut.simulateUserInitiatedFeedReload()
-        XCTAssertEqual(loader.loadFeedCallCount, 3, "Expected a third loading request once user initiates another load.")
+        sut.simulateUserInitiatedReload()
+        XCTAssertEqual(loader.loadCommentsCallCount, 3, "Expected a third loading request once user initiates another load.")
     }
 
     override func test_loadingFeedIndicator_isVisibleWhileLoadingFeed() {
@@ -40,7 +41,7 @@ final class CommentsUIIntegrationTests: FeedUIIntegrationTests {
         loader.completeFeedLoading(at: 0)
         XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once loading completes successfully.")
 
-        sut.simulateUserInitiatedFeedReload()
+        sut.simulateUserInitiatedReload()
         XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once user initiates a reload")
 
         loader.completeFeedLoadingWithError(at: 1)
@@ -60,7 +61,7 @@ final class CommentsUIIntegrationTests: FeedUIIntegrationTests {
         loader.completeFeedLoading(with: [image0], at: 0)
         assertThat(sut, isRendering: [image0])
 
-        sut.simulateUserInitiatedFeedReload()
+        sut.simulateUserInitiatedReload()
         loader.completeFeedLoading(with: [image0, image1, image2, image3], at: 1)
         assertThat(sut, isRendering: [image0, image1, image2, image3])
     }
@@ -76,7 +77,7 @@ final class CommentsUIIntegrationTests: FeedUIIntegrationTests {
         loader.completeFeedLoading(with: [image0, image1], at: 0)
         assertThat(sut, isRendering: [image0, image1])
 
-        sut.simulateUserInitiatedFeedReload()
+        sut.simulateUserInitiatedReload()
         loader.completeFeedLoading(with: [], at: 1)
         assertThat(sut, isRendering: [])
     }
@@ -89,7 +90,7 @@ final class CommentsUIIntegrationTests: FeedUIIntegrationTests {
         loader.completeFeedLoading(with: [image0], at: 0)
         assertThat(sut, isRendering: [image0])
 
-        sut.simulateUserInitiatedFeedReload()
+        sut.simulateUserInitiatedReload()
         loader.completeFeedLoadingWithError(at: 1)
         assertThat(sut, isRendering: [image0])
     }
@@ -103,7 +104,7 @@ final class CommentsUIIntegrationTests: FeedUIIntegrationTests {
         loader.completeFeedLoadingWithError(at: 0)
         XCTAssertEqual(sut.errorMessage, loadError)
 
-        sut.simulateUserInitiatedFeedReload()
+        sut.simulateUserInitiatedReload()
         XCTAssertEqual(sut.errorMessage, nil)
     }
 
@@ -122,8 +123,8 @@ final class CommentsUIIntegrationTests: FeedUIIntegrationTests {
 
     // MARK: - Helpers
 
-    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (ListViewController, FeedLoaderSpy) {
-        let loader = FeedLoaderSpy()
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (ListViewController, LoaderSpy) {
+        let loader = LoaderSpy()
         let sut = CommentsUIComposer.commentsComposedWith(commentsLoader: { loader.loadPublisher() })
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(loader, file: file, line: line)
@@ -141,6 +142,26 @@ final class CommentsUIIntegrationTests: FeedUIIntegrationTests {
 
     private func anyImageData() -> Data {
         UIImage.make(withColor: .red).pngData()!
+    }
+
+    private class LoaderSpy {
+        var requests = [PassthroughSubject<[FeedImage], Swift.Error>]()
+        var loadCommentsCallCount: Int { requests.count }
+
+        func loadPublisher() -> AnyPublisher<[FeedImage], Swift.Error> {
+            let publisher = PassthroughSubject<[FeedImage], Swift.Error>()
+            requests.append(publisher)
+            return publisher.eraseToAnyPublisher()
+        }
+
+        func completeFeedLoading(with feed: [FeedImage] = [], at index: Int = 0) {
+            requests[index].send(feed)
+        }
+
+        func completeFeedLoadingWithError(at index: Int = 0) {
+            let error = NSError(domain: "an error", code: 0)
+            requests[index].send(completion: .failure(error))
+        }
     }
 }
 

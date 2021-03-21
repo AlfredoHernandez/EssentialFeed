@@ -1,5 +1,5 @@
 //
-//  Copyright © 2020 Jesús Alfredo Hernández Alarcón. All rights reserved.
+//  Copyright © 2021 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
 import EssentialFeediOS
@@ -11,7 +11,7 @@ extension ListViewController {
         tableView.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
     }
 
-    func simulateUserInitiatedFeedReload() {
+    func simulateUserInitiatedReload() {
         refreshControl?.simulatePullToRefresh()
     }
 
