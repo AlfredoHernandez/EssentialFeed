@@ -1,5 +1,5 @@
 //
-//  Copyright © 2020 Jesús Alfredo Hernández Alarcón. All rights reserved.
+//  Copyright © 2021 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
 import Foundation
@@ -8,7 +8,7 @@ public struct ImageCommentsViewModel {
     public let comments: [ImageCommentViewModel]
 }
 
-public struct ImageCommentViewModel: Equatable {
+public struct ImageCommentViewModel: Hashable {
     public let message: String
     public let date: String
     public let username: String
@@ -32,9 +32,9 @@ public final class ImageCommentsPresenter {
 
     public static func map(
         _ comments: [ImageComment],
-        currentDate: Date,
+        currentDate: Date = Date(),
         calendar: Calendar = .current,
-        locale: Locale
+        locale: Locale = .current
     ) -> ImageCommentsViewModel {
         let formatter = RelativeDateTimeFormatter()
         formatter.locale = locale
