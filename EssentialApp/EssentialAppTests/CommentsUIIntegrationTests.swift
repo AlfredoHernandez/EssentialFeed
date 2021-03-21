@@ -9,7 +9,7 @@ import EssentialFeediOS
 import UIKit
 import XCTest
 
-final class CommentsUIIntegrationTests: FeedUIIntegrationTests {
+final class CommentsUIIntegrationTests: XCTestCase {
     func test_commentsView_hasTitle() {
         let (sut, _) = makeSUT()
 
@@ -105,7 +105,7 @@ final class CommentsUIIntegrationTests: FeedUIIntegrationTests {
         wait(for: [exp], timeout: 1.0)
     }
 
-    override func test_loadFeedCompletion_rendersErrorMessageOnErrorUntilNextReload() {
+    func test_loadCommentsCompletion_rendersErrorMessageOnErrorUntilNextReload() {
         let (sut, loader) = makeSUT()
 
         sut.loadViewIfNeeded()
@@ -118,7 +118,7 @@ final class CommentsUIIntegrationTests: FeedUIIntegrationTests {
         XCTAssertEqual(sut.errorMessage, nil)
     }
 
-    override func test_tapOnErrorView_hidesErrorMessage() {
+    func test_tapOnErrorView_hidesErrorMessage() {
         let (sut, loader) = makeSUT()
 
         sut.loadViewIfNeeded()
@@ -169,9 +169,7 @@ final class CommentsUIIntegrationTests: FeedUIIntegrationTests {
             requests[index].send(completion: .failure(error))
         }
     }
-}
 
-extension CommentsUIIntegrationTests {
     private func assertThat(
         _ sut: ListViewController,
         isRendering comments: [ImageComment],
@@ -187,9 +185,5 @@ extension CommentsUIIntegrationTests {
             XCTAssertEqual(sut.commentDate(at: index), comment.date, file: file, line: line)
             XCTAssertEqual(sut.commentUsername(at: index), comment.username, file: file, line: line)
         }
-    }
-
-    var commentsTitle: String {
-        ImageCommentsPresenter.title
     }
 }
