@@ -1,5 +1,5 @@
 //
-//  Copyright © 2020 Jesús Alfredo Hernández Alarcón. All rights reserved.
+//  Copyright © 2021 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
 import EssentialFeed
@@ -14,11 +14,13 @@ public final class FeedImageCellController: NSObject {
     public typealias ResourceViewModel = UIImage
     private let viewModel: FeedImageViewModel
     private let delegate: FeedImageCellControllerDelegate
+    private let selection: () -> Void
     private var cell: FeedImageCell?
 
-    public init(viewModel: FeedImageViewModel, delegate: FeedImageCellControllerDelegate) {
+    public init(viewModel: FeedImageViewModel, delegate: FeedImageCellControllerDelegate, selection: @escaping () -> Void) {
         self.viewModel = viewModel
         self.delegate = delegate
+        self.selection = selection
     }
 
     private func cancelLoad() {
@@ -44,6 +46,10 @@ extension FeedImageCellController: UITableViewDataSource, UITableViewDelegate, U
         cell?.descriptionLabel.text = viewModel.description
         delegate.didRequestImage()
         return cell!
+    }
+
+    public func tableView(_: UITableView, didSelectRowAt _: IndexPath) {
+        selection()
     }
 
     public func tableView(_: UITableView, prefetchRowsAt _: [IndexPath]) {
